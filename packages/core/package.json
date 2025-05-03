@@ -1,5 +1,5 @@
 {
-  "name": "my-ui",
+  "name": "learn-ui",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@my-ui/components": "workspace:*"
+    "@learn-ui/components": "workspace:*"
   }
 }

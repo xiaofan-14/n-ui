@@ -2,8 +2,8 @@ import {createApp} from 'vue'
 import './style.css'
 import App from './App.vue'
 import 'virtual:uno.css'
-import MyUi from 'my-ui'
+import LearnUI from 'learn-ui'
 
 createApp(App)
-    .use(MyUi)
+    .use(LearnUI)
     .mount('#app')

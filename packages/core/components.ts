@@ -1,6 +1,6 @@
-import { MButton } from '@my-ui/components'
+import { LButton } from '@learn-ui/components'
 import type {Plugin } from 'vue'
 
 export default [
-    MButton
+    LButton
 ] as Plugin[]

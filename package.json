@@ -1,10 +1,10 @@
 {
-  "name": "@my-ui/workspace",
+  "name": "@learn-ui/workspace",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm --filter @my-ui/playground dev"
+    "dev": "pnpm --filter @learn-ui/playground dev"
   },
   "keywords": [],
   "author": "",
@@ -20,11 +20,11 @@
     "vitest": "^3.1.2"
   },
   "dependencies": {
-    "@my-ui/hooks": "workspace:*",
-    "@my-ui/themes": "workspace:*",
-    "@my-ui/utils": "workspace:*",
+    "@learn-ui/hooks": "workspace:*",
+    "@learn-ui/themes": "workspace:*",
+    "@learn-ui/utils": "workspace:*",
     "lodash-es": "^4.17.21",
-    "my-ui": "workspace:*",
+    "learn-ui": "workspace:*",
     "vue": "^3.5.13"
   }
 }

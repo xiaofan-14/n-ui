@@ -2,9 +2,9 @@
 </script>
 
 <template>
-  <MButton>
+  <l-button>
     click me
-  </MButton>
+  </l-button>
 </template>
 
 <style scoped>

@@ -8,21 +8,21 @@ importers:
 
   .:
     dependencies:
-      '@my-ui/hooks':
+      '@learn-ui/hooks':
         specifier: workspace:*
         version: link:packages/hooks
-      '@my-ui/themes':
+      '@learn-ui/themes':
         specifier: workspace:*
         version: link:packages/themes
-      '@my-ui/utils':
+      '@learn-ui/utils':
         specifier: workspace:*
         version: link:packages/utils
+      learn-ui:
+        specifier: workspace:*
+        version: link:packages/core
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
-      my-ui:
-        specifier: workspace:*
-        version: link:packages/core
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.8.3)
@@ -54,7 +54,7 @@ importers:
 
   packages/components:
     dependencies:
-      '@my-ui/utils':
+      '@learn-ui/utils':
         specifier: workspace:*
         version: link:../utils
       '@popperjs/core':
@@ -76,7 +76,7 @@ importers:
 
   packages/core:
     dependencies:
-      '@my-ui/components':
+      '@learn-ui/components':
         specifier: workspace:*
         version: link:../components
 

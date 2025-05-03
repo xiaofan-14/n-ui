@@ -1,5 +1,5 @@
 {
-  "name": "@my-ui/components",
+  "name": "@learn-ui/components",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,6 +17,6 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "async-validator": "^4.2.5",
-    "@my-ui/utils": "workspace:*"
+    "@learn-ui/utils": "workspace:*"
   }
 }

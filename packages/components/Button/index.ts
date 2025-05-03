@@ -1,4 +1,4 @@
 import Button from './index.vue'
-import { withInstall } from "@my-ui/utils"
+import { withInstall } from "@learn-ui/utils"
 
-export const MButton = withInstall(Button)
+export const LButton = withInstall(Button)

@@ -1,15 +1,47 @@
 {
   "name": "learn-ui",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "components library by vue3 + Ts",
+  "main": "./dist/umd/index.umd.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/core/index.js",
+  "files": ["dist"],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/umd/index.umd.cjs",
+      "types": "./dist/types/core/index.js"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
+    }
   },
-  "keywords": [],
-  "author": "",
+  "sideEffects": [ "./dist/index.css" ],
+  "scripts": {
+    "build": "run-s build-only move-style",
+    "build-only": "run-p build-es build-umd ",
+    "build-es": "vite build --config vite.es.config.ts",
+    "build-umd": "vite build --config vite.umd.config.ts",
+    "move-style": "move-file dist/esm/index.css dist/index.css"
+  },
+  "keywords": [
+    "ui"
+  ],
+  "author": "xiao_fan",
   "license": "ISC",
-  "dependencies": {
+  "dependencies":{
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@popperjs/core": "^2.11.8",
+    "async-validator": "^4.2.5"
+  },
+  "devDependencies": {
     "@learn-ui/components": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.13"
   }
 }

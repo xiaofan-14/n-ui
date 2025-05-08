@@ -1,6 +1,8 @@
-import { LButton } from '@learn-ui/components'
+import { ErButton, ErButtonGroup, ErIcon } from '@learn-ui/components'
 import type {Plugin } from 'vue'
 
 export default [
-    LButton
+    ErButton,
+    ErIcon,
+    ErButtonGroup
 ] as Plugin[]

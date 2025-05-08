@@ -7,7 +7,7 @@
   "types": "./dist/types/core/index.js",
   "files": ["dist"],
   "type": "module",
-  "private": false,
+  "private": true,
   "exports": {
     ".": {
       "import": "./dist/esm/index.js",

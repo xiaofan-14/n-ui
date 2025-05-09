@@ -1,25 +1,26 @@
 {
   "name": "learn-ui",
-  "version": "1.0.0",
+  "version": "1.0.10",
   "description": "components library by vue3 + Ts",
   "main": "./dist/umd/index.umd.cjs",
   "module": "./dist/esm/index.js",
-  "types": "./dist/types/core/index.js",
+  "types": "./dist/types/core/index.d.ts",
   "files": ["dist"],
   "type": "module",
-  "private": true,
   "exports": {
     ".": {
       "import": "./dist/esm/index.js",
       "require": "./dist/umd/index.umd.cjs",
-      "types": "./dist/types/core/index.js"
+      "types": "./dist/types/core/index.d.ts"
     },
     "./dist/": {
       "import": "./dist/",
       "require": "./dist/"
     }
   },
-  "sideEffects": [ "./dist/index.css" ],
+  "sideEffects": [
+    "./dist/index.css"
+  ],
   "scripts": {
     "build": "run-s build-only move-style",
     "build-only": "run-p build-es build-umd ",

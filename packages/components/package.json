@@ -1,5 +1,5 @@
 {
-  "name": "@learn-ui/components",
+  "name": "@learn-ui-to-me/components",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,6 +14,6 @@
     "jsdom": "^26.1.0"
   },
   "dependencies": {
-    "@learn-ui/utils": "workspace:*"
+    "@learn-ui-to-me/utils": "workspace:*"
   }
 }

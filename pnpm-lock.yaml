@@ -17,19 +17,19 @@ importers:
       '@fortawesome/vue-fontawesome':
         specifier: ^3.0.8
         version: 3.0.8(@fortawesome/fontawesome-svg-core@6.7.2)(vue@3.5.13(typescript@5.8.3))
-      '@learn-ui/hooks':
+      '@learn-ui-to-me/hooks':
         specifier: workspace:*
         version: link:packages/hooks
-      '@learn-ui/theme':
+      '@learn-ui-to-me/theme':
         specifier: workspace:*
         version: link:packages/theme
-      '@learn-ui/utils':
+      '@learn-ui-to-me/utils':
         specifier: workspace:*
         version: link:packages/utils
       '@vitejs/plugin-vue-jsx':
         specifier: ^4.1.2
         version: 4.1.2(vite@6.3.4(@types/node@22.15.3)(jiti@2.4.2))(vue@3.5.13(typescript@5.8.3))
-      learn-ui:
+      learn-ui-to-me:
         specifier: workspace:*
         version: link:packages/core
       lodash-es:
@@ -93,7 +93,7 @@ importers:
 
   packages/components:
     dependencies:
-      '@learn-ui/utils':
+      '@learn-ui-to-me/utils':
         specifier: workspace:*
         version: link:../utils
     devDependencies:
@@ -128,7 +128,7 @@ importers:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.8.3)
     devDependencies:
-      '@learn-ui/components':
+      '@learn-ui-to-me/components':
         specifier: workspace:*
         version: link:../components
 

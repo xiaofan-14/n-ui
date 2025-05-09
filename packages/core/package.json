@@ -1,5 +1,5 @@
 {
-  "name": "learn-ui",
+  "name": "learn-ui-to-me",
   "version": "1.0.0",
   "description": "components library by vue3 + Ts",
   "main": "./dist/umd/index.umd.cjs",
@@ -41,7 +41,7 @@
     "async-validator": "^4.2.5"
   },
   "devDependencies": {
-    "@learn-ui/components": "workspace:*"
+    "@learn-ui-to-me/components": "workspace:*"
   },
   "peerDependencies": {
     "vue": "^3.5.13"

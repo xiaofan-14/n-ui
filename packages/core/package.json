@@ -1,6 +1,6 @@
 {
   "name": "learn-ui",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "components library by vue3 + Ts",
   "main": "./dist/umd/index.umd.cjs",
   "module": "./dist/esm/index.js",

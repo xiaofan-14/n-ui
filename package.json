@@ -31,7 +31,6 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "learn-ui": "workspace:*",
-    "@learn-ui/hooks": "workspace:*",
     "@learn-ui/theme": "workspace:*",
     "@learn-ui/utils": "workspace:*",
     "@vitejs/plugin-vue-jsx": "^4.1.2",

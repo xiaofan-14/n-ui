@@ -1,6 +1,6 @@
 {
   "name": "learn-ui-monorepo",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -24,15 +24,16 @@
     "vite-plugin-dts": "3.9.1",
     "vitest": "^3.1.2",
     "@popperjs/core": "^2.11.8",
-    "async-validator": "^4.2.5"
+    "async-validator": "^4.2.5",
+    "@learn-ui/hooks": "workspace:*",
+    "@learn-ui/theme": "workspace:*",
+    "@learn-ui/utils": "workspace:*"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "learn-ui": "workspace:*",
-    "@learn-ui/theme": "workspace:*",
-    "@learn-ui/utils": "workspace:*",
     "@vitejs/plugin-vue-jsx": "^4.1.2",
     "lodash-es": "^4.17.21",
     "postcss-color-mix": "^1.1.0",

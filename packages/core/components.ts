@@ -1,4 +1,4 @@
-import { ErButton, ErButtonGroup, ErIcon } from '@learn-ui/components'
+import { ErButton, ErButtonGroup, ErIcon } from '@learn-ui-to-me/components'
 import type {Plugin } from 'vue'
 
 export default [

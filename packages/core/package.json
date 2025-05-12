@@ -22,11 +22,13 @@
     "./dist/index.css"
   ],
   "scripts": {
-    "build": "run-s build-only move-style",
+    "build": "run-s rimraf build-only move-style",
     "build-only": "run-p build-es build-umd ",
     "build-es": "vite build --config vite.es.config.ts",
     "build-umd": "vite build --config vite.umd.config.ts",
-    "move-style": "move-file dist/esm/index.css dist/index.css"
+    "move-style": "move-file dist/esm/index.css dist/index.css",
+    "clean": "rimraf dist",
+    "release": "release-it"
   },
   "keywords": [
     "ui"

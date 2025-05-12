@@ -23,5 +23,9 @@ setTimeout(()=>{
 
   <ErButton :autofocus="true" :circle="true" icon="search" />
 
-  <ErButtonGroup /> 
+  <ErButtonGroup disabled>
+    <ErButton icon="arrow-left">prev</ErButton>
+    <ErButton >current</ErButton>
+    <ErButton suffixIcon="arrow-right">next</ErButton>
+  </ErButtonGroup>
 </template>

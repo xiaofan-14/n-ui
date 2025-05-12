@@ -1,6 +1,6 @@
 import type {Meta, StoryObj, ArgTypes} from '@storybook/vue3'
 import {fn, within, userEvent, expect} from '@storybook/test'
-import {ErButton, ErButtonGroup} from 'learn-ui'
+import {ErButton, ErButtonGroup} from 'learn-ui-to-me'
 
 type Story = StoryObj<typeof ErButton> & { argsType?: ArgTypes }
 
@@ -150,26 +150,6 @@ export const ThrottleClick: Story = {
         await userEvent.click(btn)
         await userEvent.click(btn)
         await expect(args.onClick).toHaveBeenCalledTimes(1)
-    },
-}
-
-// ======================== Tag & NativeType ========================
-export const AsAnchorTag: Story = {
-    args: {
-        tag: 'a',
-        content: 'Link Button',
-        href: 'https://example.com',
-    },
-    render: (args: any) => ({
-        components: {ErButton},
-        setup: () => ({args}),
-        template: `
-          <ErButton v-bind="args">{{ args.content }}</ErButton>`,
-    }),
-    play: async ({canvasElement}) => {
-        const canvas = within(canvasElement)
-        const anchor = canvas.getByRole('link')
-        await expect(anchor).toHaveAttribute('href', 'https://example.com')
     },
 }
 

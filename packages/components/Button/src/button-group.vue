@@ -8,7 +8,6 @@ defineOptions({
 })
 
 const props = defineProps<buttonGroupProps>()
-
 provide(
     BUTTON_GROUP_CTX,
     reactive({

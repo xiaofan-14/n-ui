@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm --filter @learn-ui-to-me/playground dev",
-    "storybook": "pnpm --filter @learn-ui-to-me/playground storybook",
+    "dev": "pnpm run build && pnpm --filter @learn-ui-to-me/playground dev",
+    "storybook": "pnpm run build && pnpm --filter @learn-ui-to-me/playground storybook",
     "test": "pnpm --filter @learn-ui-to-me/components test",
     "build": "pnpm --filter learn-ui-to-me build"
   },

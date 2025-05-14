@@ -5,6 +5,7 @@ import {nextTick} from "vue"
 
 import Collapse from "../src/collapse.vue"
 import CollapseItem from "../src/colllapse-item.vue"
+import transitionEvents from "../src/transitionEvents.ts"
 
 const onChange = vi.fn();
 
@@ -42,7 +43,7 @@ describe("Collapse.vue", () => {
         attachTo: document.body, // 最新版本 jsdom 更新缓存 bug
       }
     );
-    
+
     headers = wrapper.findAll(".er-collapse-item__header");
     contents = wrapper.findAll(".er-collapse-item__wapper");
 

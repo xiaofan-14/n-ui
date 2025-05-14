@@ -1,16 +1,18 @@
-import { 
-    ErButton, 
-    ErButtonGroup,
-    ErIcon,
-    ErCollapse,
-    ErCollapseItem,
+import {
+  ErButton,
+  ErButtonGroup,
+  ErIcon,
+  ErCollapse,
+  ErCollapseItem,
+  ErAlert
 } from '@learn-ui-to-me/components'
-import type {Plugin } from 'vue'
+import type {Plugin} from 'vue'
 
 export default [
-    ErButton,
-    ErIcon,
-    ErButtonGroup,
-    ErCollapse,
-    ErCollapseItem,
+  ErButton,
+  ErIcon,
+  ErButtonGroup,
+  ErCollapse,
+  ErCollapseItem,
+  ErAlert
 ] as Plugin[]

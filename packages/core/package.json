@@ -5,7 +5,9 @@
   "main": "./dist/umd/index.umd.cjs",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/core/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "exports": {
     ".": {
@@ -22,12 +24,12 @@
     "./dist/index.css"
   ],
   "scripts": {
-    "build": "run-s clean build-only move-style",
-    "build-only": "run-p build-es build-umd ",
+    "build": "run-p build-es build-umd ",
+    "build:watch": "run-p build-ws:watch build-umd:watch",
     "build-es": "vite build --config vite.es.config.ts",
     "build-umd": "vite build --config vite.umd.config.ts",
-    "move-style": "move-file dist/esm/index.css dist/index.css",
-    "clean": "rimraf dist",
+    "build-es:watch": "vite build --watch --config vite.es.config.ts",
+    "build-umd:watch": "vite build --watch --config vite.umd.config.ts",
     "release": "release-it"
   },
   "keywords": [
@@ -35,7 +37,7 @@
   ],
   "author": "xiao_fan",
   "license": "ISC",
-  "dependencies":{
+  "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
@@ -43,7 +45,10 @@
     "async-validator": "^4.2.5"
   },
   "devDependencies": {
-    "@learn-ui-to-me/components": "workspace:*"
+    "@learn-ui-to-me/components": "workspace:*",
+    "@rollup/plugin-terser": "^0.4.4",
+    "terser": "^5.39.0",
+    "vite-plugin-compression2": "^1.3.3"
   },
   "peerDependencies": {
     "vue": "^3.5.13"

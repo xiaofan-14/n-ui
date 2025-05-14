@@ -1,6 +1,6 @@
 import type {ComputedRef, Ref, VNode} from "vue";
 
-export type buttonType = 'primary' | 'default' | 'success' | 'warning' | 'danger' | 'text'
+export type buttonType = 'primary' | 'default' | 'success' | 'warning' | 'danger'
 export type buttonSize = 'small' | 'default' | 'large'
 export type nativeType = 'button' | 'submit' | 'reset'
 

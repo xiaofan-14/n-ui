@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "pnpm --filter @learn-ui-to-me/playground dev",
+    "docs:dev": "pnpm --filter @learn-ui-to-me/docs dev",
+    "docs:build": "pnpm --filter @learn-ui-to-me/docs build",
     "storybook": "pnpm --filter @learn-ui-to-me/playground storybook",
     "test": "cross-env NODE_ENV=test pnpm --filter @learn-ui-to-me/components test",
     "build": "cross-env NODE_ENV=production pnpm --filter learn-ui-to-me build",
@@ -37,6 +39,7 @@
     "@learn-ui-to-me/hooks": "workspace:*",
     "@learn-ui-to-me/theme": "workspace:*",
     "@learn-ui-to-me/utils": "workspace:*",
+    "@vitepress-preview/component": "workspace:*",
     "@vitejs/plugin-vue-jsx": "^4.1.2",
     "learn-ui-to-me": "workspace:*",
     "lodash-es": "^4.17.21",

@@ -10,11 +10,13 @@ const appComp = defineComponent({
   }
 })
 const compA = withInstall(defineComponent({
+  name:'compA',
   setup() {
     return () => <div>ComA</div>
   }
 }))
 const compB = withInstall(defineComponent({
+  name:'compB',
   setup() {
     return () => <div>ComB</div>
   }

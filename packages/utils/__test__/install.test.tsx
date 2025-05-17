@@ -24,11 +24,11 @@ describe('install ', () => {
   it('withInstall should be worked', () => {
     const wrapper = mount(()=><div id='app'></div>)
     const app = createApp(appComp)
-    app.use(compA).use(compB).mount(wrapper.element)
+    app.use(compA).mount(wrapper.element)
     expect(compA.install).toBeDefined()
     expect(compB.install).toBeDefined()
-    expect(wrapper.findComponent(compA)).toBeTruthy()
-    expect(wrapper.findComponent(compB)).toBeTruthy()
+    expect(app._context.components['compA']).toBeTruthy()
+    expect(app._context.components['compB']).toBeFalsy()
   })
 
   it('setupInstall should be worked', ()=>{
@@ -37,7 +37,7 @@ describe('install ', () => {
     const installer = setupInstall([compA, compB])
     app.use(installer).mount(wrapper.element)
     expect(installer).toBeDefined()
-    expect(wrapper.findComponent(compA)).toBeTruthy()
-    expect(wrapper.findComponent(compB)).toBeTruthy()
+    expect(app._context.components['compA']).toBeTruthy()
+    expect(app._context.components['compB']).toBeTruthy()
   })
 })

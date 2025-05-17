@@ -13,7 +13,7 @@ provide(
   reactive({
     size: toRef(props, 'size'),
     type: toRef(props, 'type'),
-    disable: toRef(props, 'disabled')
+    disabled: toRef(props, 'disabled')
   })
 )
 </script>

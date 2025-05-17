@@ -10,7 +10,7 @@ next:
 
 
 ```bash
-npm i @eric-ui --save
+npm i learn-ui-to-me --save
 ```
 
 ## 开始使用
@@ -20,13 +20,13 @@ npm i @eric-ui --save
 
 ```js
 // 引入所有组件
-import EricUI from 'eric-ui'
+import LearnUI from 'learn-ui-to-me'
 // 引入样式
-import 'eric-ui/dist/style.css'
+import 'learn-ui-to-me/dist/index.css'
 
 import App from './App.vue'
 // 全局使用
-createApp(App).use(ErElement).mount('#app')
+createApp(App).use(LearnUI).mount('#app')
 ```
 
 ```vue
@@ -35,22 +35,34 @@ createApp(App).use(ErElement).mount('#app')
 </template>
 ```
 
-**单个导入**
+[//]: # (**单个导入**)
 
-Eric-UI 提供了基于 ES Module 的开箱即用的 Tree Shaking 功能。
+[//]: # ()
+[//]: # (Learn-UI 提供了基于 ES Module 的开箱即用的 Tree Shaking 功能。)
 
+[//]: # ()
+[//]: # ()
+[//]: # (```vue)
 
-```vue
-<template>
-  <er-button>我是 Button</er-button>
-</template>
-<script>
-  import { ErButton } from ' er-element'
-  export default {
-    components: { ErButton },
-  }
-</script>
-```
+[//]: # (<template>)
+
+[//]: # (  <er-button>我是 Button</er-button>)
+
+[//]: # (</template>)
+
+[//]: # (<script>)
+
+[//]: # (  import { ErButton } from ' er-element')
+
+[//]: # (  export default {)
+
+[//]: # (    components: { ErButton },)
+
+[//]: # (  })
+
+[//]: # (</script>)
+
+[//]: # (```)
 
 ## 亮点
 

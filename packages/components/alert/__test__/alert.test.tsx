@@ -1,7 +1,7 @@
-import {describe, it, expect, vi} from "vitest";
-import type {alertType} from "../src/alert.ts";
-import {mount} from "@vue/test-utils";
-import {ErAlert as Alert} from "../index";
+import {describe, it, expect, vi} from "vitest"
+import type {alertType} from "../src/alert"
+import {mount} from "@vue/test-utils"
+import {ErAlert as Alert} from "../index"
 import {ErIcon as Icon} from '../../icon'
 
 describe("Alert.vue", () => {
@@ -129,3 +129,12 @@ describe("Alert.vue", () => {
     expect(wrapper.find(".er-alert").attributes().style).toBe("");
   });
 });
+
+describe('Alert/index',()=>{
+  it('should be exported with withInstall',()=>{
+    expect(Alert.install).toBeDefined()
+  })
+  it('component should be exported',()=>{
+    expect(Alert).toBe(Alert)
+  })
+})

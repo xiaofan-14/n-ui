@@ -36,7 +36,7 @@
     "packages/components/**/*.ts",
   ],
   "exclude": [
-    "packages/components/vitest.config.ts",
+    "vitest.config.ts",
     "packages/components/index.test.ts"
   ]
 }

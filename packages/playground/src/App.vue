@@ -1,48 +1,23 @@
 <script setup lang="ts">
-import {ref} from 'vue'
-
-function test() {
-  console.log('clicked!')
+function test(s: string){
+  console.log('test ok', s)
 }
-
-const disabled = ref(false)
-
-setTimeout(() => {
-  disabled.value = true
-}, 1500)
-
-const val = ref(['a'])
-
 </script>
 
 <template>
-  <er-button type="primary" size="default" icon="check" :plain="true" @click="test">
-    编辑
-  </er-button>
-  <ErButton type="danger" size="small" :plain="true" suffixIcon="arrow-right">
-    danger
-  </ErButton>
-  <ErButton type="success" size="default" icon="search">
-    success
-  </ErButton>
-
-  <ErButton :autofocus="true" :circle="true" icon="search"/>
-
-  <ErButtonGroup :disabled="true">
-    <ErButton icon="arrow-left" @click="test">prev</ErButton>
-    <ErButton @click="test">current</ErButton>
-    <ErButton suffixIcon="arrow-right" @click="test">next</ErButton>
-  </ErButtonGroup>
-
-  <Collapse :modelValue="val" accordion>
-    <CollapseItem name="a" title="title a">
-      content a Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, rem.
-    </CollapseItem>
-    <CollapseItem name="b" title="title b">
-      content b
-    </CollapseItem>
-    <CollapseItem name="c" title="title c" :disabled="true">
-      content c
-    </CollapseItem>
-  </Collapse>
+  <p>
+    <er-button-group disabled>
+      <er-button type="primary" icon="arrow-left" @click="test('1')" >Previous Page</er-button>
+      <er-button type="primary" @click="test('2')" >
+        Next Page<er-icon icon="arrow-right" style="margin-left: 8px" />
+      </er-button>
+    </er-button-group>
+  </p>
+  <p>
+    <er-button-group type="warning" size="small">
+      <er-button type="primary" icon="edit" round @click="test('3')" />
+      <er-button type="primary" icon="share"  @click="test('4')" />
+      <er-button type="primary" icon="trash" round @click="test('5')" />
+    </er-button-group>
+  </p>
 </template>

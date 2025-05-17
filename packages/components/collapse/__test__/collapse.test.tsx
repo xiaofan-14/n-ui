@@ -169,7 +169,7 @@ describe("Collapse.vue", () => {
       `
         [
           [
-            [ErUIError: [ErCollapse] accordion mode should only have one active item],
+            [ErUiError: [Collapse]:accordion mode should only have one active item],
           ],
         ]
       `
@@ -177,7 +177,7 @@ describe("Collapse.vue", () => {
   });
 });
 
-describe("Collapse/transitionEvents.ts", () => {
+describe("Collapse/src/transitionEvents.ts", () => {
   const wrapper = mount(() => <div></div>);
   test("beforeEnter", () => {
     transitionEvents.beforeEnter(wrapper.element);

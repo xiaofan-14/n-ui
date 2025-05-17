@@ -1,7 +1,7 @@
 import {defineConfig} from 'vite'
 import {resolve} from 'path'
-import {readFileSync} from 'fs'
-import {delay} from "lodash-es";
+import {readFile} from 'fs'
+import {defer, delay} from "lodash-es";
 import hooks from './hooksPlugin'
 import shell from 'shelljs'
 import {compression} from "vite-plugin-compression2";
@@ -13,13 +13,12 @@ const TRY_MOVE_STYLE_DELAY = 800
 const isProd = process.env.NODE_ENV === "production";
 const isDev = process.env.NODE_ENV === "development";
 const isTest = process.env.NODE_ENV === "test";
+
 function moveStyles() {
-    try {
-        readFileSync('./dist/umd/index.css.gz')
-        shell.cp('./dist/umd/index.css', './dist/index.css')
-    } catch (_) {
-        delay(moveStyles, TRY_MOVE_STYLE_DELAY)
-    }
+  readFile("./dist/umd/index.css.gz", (err) => {
+    if (err) return delay(moveStyles, TRY_MOVE_STYLE_DELAY);
+    defer(() => shell.cp("./dist/umd/index.css", "./dist/index.css"));
+  });
 }
 
 export default defineConfig({
@@ -48,7 +47,7 @@ export default defineConfig({
     build: {
         outDir: 'dist/umd',
         lib: {
-            entry: resolve(__dirname, './index.ts'),
+            entry: resolve(__dirname, '../index.ts'),
             name: 'LearnUI',
             fileName: 'index',
             formats: ['umd']

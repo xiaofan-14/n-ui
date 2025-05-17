@@ -8,7 +8,9 @@
     "docs:dev": "pnpm --filter @learn-ui-to-me/docs dev",
     "docs:build": "pnpm --filter @learn-ui-to-me/docs build",
     "storybook": "pnpm --filter @learn-ui-to-me/playground storybook",
-    "test": "cross-env NODE_ENV=test pnpm --filter @learn-ui-to-me/components test",
+    "test": "run-p test:utils test:comp",
+    "test:comp": "cross-env NODE_ENV=test pnpm --filter @learn-ui-to-me/components test",
+    "test:utils": "cross-env NODE_ENV=test pnpm --filter @learn-ui-to-me/utils test",
     "build": "cross-env NODE_ENV=production pnpm --filter learn-ui-to-me build",
     "build:dev": "cross-env NODE_ENV=development pnpm --filter learn-ui-to-me build:watch"
   },
@@ -30,7 +32,10 @@
     "typescript": "^5.8.3",
     "vite": "^6.3.4",
     "vite-plugin-dts": "3.9.1",
-    "vitest": "^3.1.2"
+    "vitest": "^3.1.2",
+    "@vitest/coverage-v8": "^3.1.2",
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^26.1.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",

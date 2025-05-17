@@ -4,15 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "vitest --coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@vitest/coverage-v8": "^3.1.2",
-    "@vue/test-utils": "^2.4.6",
-    "jsdom": "^26.1.0"
-  },
   "dependencies": {
     "@learn-ui-to-me/utils": "workspace:*"
   }

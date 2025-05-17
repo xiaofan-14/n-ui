@@ -1,12 +1,13 @@
 import {defineConfig} from 'vite'
 import {resolve} from 'path'
-import {readdirSync, readFileSync} from "fs";
-import {delay, filter, map} from "lodash-es";
+import {readdir, readdirSync} from "fs";
+import {defer, delay, filter, map} from "lodash-es";
 import hooks from './hooksPlugin'
 import shell from "shelljs";
 import dts from "vite-plugin-dts";
 import vue from '@vitejs/plugin-vue'
 import terser from '@rollup/plugin-terser'
+import { visualizer } from "rollup-plugin-visualizer"
 
 const TRY_MOVE_STYLE_DELAY = 800
 
@@ -24,17 +25,18 @@ function getDirectoriesSync(basePath: string) {
 }
 
 function moveStyles() {
-  try {
-    readFileSync('./dist/esm/theme')
-    shell.cp('./dist/esm/theme', './dist')
-  } catch (_) {
-    delay(moveStyles, TRY_MOVE_STYLE_DELAY)
-  }
+  readdir('./dist/esm/them', (err) => {
+    if (err) return delay(moveStyles, TRY_MOVE_STYLE_DELAY)
+    defer(() => shell.mv('./dist/esm/theme', './dist'))
+  })
 }
 
 export default defineConfig({
   plugins: [
     vue(),
+    visualizer({
+      filename: 'dist/stats.es.html'
+    }),
     dts({
       tsconfigPath: '../../tsconfig.build.json',
       outDir: 'dist/types'
@@ -76,7 +78,7 @@ export default defineConfig({
     minify: false,
     cssCodeSplit: true,
     lib: {
-      entry: resolve(__dirname, './index.ts'),
+      entry: resolve(__dirname, '../index.ts'),
       name: 'LearnUI',
       fileName: 'index',
       formats: ['es']

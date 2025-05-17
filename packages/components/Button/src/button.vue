@@ -26,7 +26,6 @@ const ctx = inject(BUTTON_GROUP_CTX, void 0)
 const size = computed(() => ctx?.size ?? props?.size ?? '')
 const type = computed(() => ctx?.type ?? props?.type ?? '')
 const disabled = computed(() => ctx?.disabled || props?.disabled || false)
-
 function handleBtnClick(e: MouseEvent) {
   emits('click', e)
 }

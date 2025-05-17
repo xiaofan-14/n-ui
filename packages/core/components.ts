@@ -4,7 +4,8 @@ import {
   ErIcon,
   ErCollapse,
   ErCollapseItem,
-  ErAlert
+  ErAlert,
+  ErTooltip
 } from '@learn-ui-to-me/components'
 import type {Plugin} from 'vue'
 
@@ -14,5 +15,6 @@ export default [
   ErButtonGroup,
   ErCollapse,
   ErCollapseItem,
-  ErAlert
+  ErAlert,
+  ErTooltip
 ] as Plugin[]

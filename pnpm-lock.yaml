@@ -127,6 +127,9 @@ importers:
 
   packages/components:
     dependencies:
+      '@learn-ui-to-me/hooks':
+        specifier: workspace:*
+        version: link:../hooks
       '@learn-ui-to-me/utils':
         specifier: workspace:*
         version: link:../utils

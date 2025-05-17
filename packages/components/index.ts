@@ -1,4 +1,5 @@
-export * from './icon'
 export * from './button'
+export * from './icon'
 export * from './collapse'
 export * from './alert'
+export * from './tooltip'

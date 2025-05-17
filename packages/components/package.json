@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest --run --coverage"
+    "test": "vitest --run --coverage",
+    "test:watch": "vitest --coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@learn-ui-to-me/utils": "workspace:*"
+    "@learn-ui-to-me/utils": "workspace:*",
+    "@learn-ui-to-me/hooks": "workspace:*"
   }
 }

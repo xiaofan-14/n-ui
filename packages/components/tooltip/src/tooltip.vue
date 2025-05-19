@@ -2,6 +2,7 @@
 import type {Ref} from 'vue'
 import type {DebouncedFunc} from 'lodash-es'
 import type {Instance} from '@popperjs/core'
+import type {buttonInstance} from "../../button"
 import type {
   tooltipProps,
   tooltipEmits,
@@ -17,12 +18,18 @@ import {
 import {bind, debounce} from 'lodash-es'
 import {createPopper} from '@popperjs/core'
 import {useClickOutSide} from '@learn-ui-to-me/hooks'
+import {useEventToTriggerNode} from "./useEventToTriggerNode"
+
+interface _tooltipProps extends tooltipProps {
+  virtualRef?: HTMLElement | buttonInstance | void
+  virtualTriggering?: boolean
+}
 
 defineOptions({
   name: 'ErTooltip'
 })
 
-const props = withDefaults(defineProps<tooltipProps>(), {
+const props = withDefaults(defineProps<_tooltipProps>(), {
   placement: 'bottom',
   trigger: 'hover',
   transition: 'fade',
@@ -32,17 +39,17 @@ const props = withDefaults(defineProps<tooltipProps>(), {
 const emits = defineEmits<tooltipEmits>()
 
 const visible = ref(false)
-const containerNode = ref(null)
-const _triggerNode = ref(null)
-const virtualTriggering = ref(null)
-const popperNode = ref(null)
+
+const containerNode = ref<HTMLElement | null>(null)
+const _triggerNode = ref<HTMLElement>()
+const popperNode = ref<HTMLElement>()
 
 const events: Ref<Record<string, EventListener>> = ref({})
 const outerEvents: Ref<Record<string, EventListener>> = ref({})
 const dropdownEvents: Ref<Record<string, EventListener>> = ref({})
 
 const popperOptions = computed(() => ({
-  placements: props.placement,
+  placement: props.placement,
   modifiers: [
     {
       name: 'offset',
@@ -53,24 +60,48 @@ const popperOptions = computed(() => ({
   ],
   ...props.popperOptions
 }))
+
 const openDelay = computed(() => props.trigger === 'hover' ? props.showTimeout : 0)
 const closeDelay = computed(() => props.trigger === 'hover' ? props.hideTimeout : 0)
+const triggerNode = computed(() => {
+  if (props.virtualTriggering) {
+    return (
+      ((props.virtualRef as buttonInstance)?.ref as any) ??
+      (props.virtualRef as HTMLElement) ?? _triggerNode.value
+    )
+  }
+  return _triggerNode.value as HTMLElement
+})
 
 const show: tooltipInstance['show'] = openFinal
 const hide: tooltipInstance['hide'] = function () {
   openDebounce?.cancel()
-  setVisibel(false)
+  setVisible(false)
 }
+
+const triggerStrategyMap: Map<string, () => void> = new Map()
+triggerStrategyMap.set('hover', () => {
+  events.value['mouseenter'] = openFinal
+  outerEvents.value['mouseleave'] = closeFinal
+  dropdownEvents.value['mouseenter'] = openFinal
+})
+triggerStrategyMap.set('click', () => {
+  events.value['click'] = togglePopper
+})
+triggerStrategyMap.set('contextmenu', () => {
+  events.value['contextmenu'] = (e) => {
+    e.preventDefault()
+    openFinal()
+  }
+})
 
 let openDebounce: DebouncedFunc<() => void> | null
 let closeDebounce: DebouncedFunc<() => void> | null
 
 let popperInstance: null | Instance
 
-
 function destroyPopperInstance() {
-  if (!popperInstance) return
-  popperInstance.destroy()
+  popperInstance?.destroy()
   popperInstance = null
 }
 
@@ -85,14 +116,10 @@ function closeFinal() {
 }
 
 function togglePopper() {
-
-}
-
-function toggleVisibel() {
   visible.value ? closeFinal() : openFinal()
 }
 
-function setVisibel(val: boolean) {
+function setVisible(val: boolean) {
   if (props.disabled) return
   visible.value = val
   emits('visible-change', val)
@@ -100,23 +127,7 @@ function setVisibel(val: boolean) {
 
 function attachEvents() {
   if (props.disabled || props.manual) return
-  if (props.trigger === 'hover') {
-    events.value['mouseenter'] = openFinal
-    outerEvents.value['mouseleave'] = closeFinal
-    dropdownEvents.value['mouseenter'] = openFinal
-    return
-  }
-  if (props.trigger === 'click') {
-    events.value['click'] = togglePopper
-    return
-  }
-  if (props.trigger === 'contextmenu') {
-    events.value['contextmenu'] = (e) => {
-      e.preventDefault()
-      openFinal()
-    }
-    return
-  }
+  triggerStrategyMap.get(props.trigger)?.()
 }
 
 function resetEvents() {
@@ -127,12 +138,13 @@ function resetEvents() {
   attachEvents()
 }
 
+if (!props.manual) {
+  attachEvents()
+}
+
 watchEffect(() => {
-  if (!props.manual) {
-    attachEvents()
-  }
-  openDebounce = debounce(bind(setVisibel, null, true), openDelay.value)
-  closeDebounce = debounce(bind(setVisibel, null, false), closeDelay.value)
+  openDebounce = debounce(bind(setVisible, null, true), openDelay.value)
+  closeDebounce = debounce(bind(setVisible, null, false), closeDelay.value)
 })
 
 useClickOutSide(containerNode, () => {
@@ -143,9 +155,9 @@ useClickOutSide(containerNode, () => {
 
 watch(visible, (val) => {
   if (!val) return
-  if (_triggerNode.value && popperNode.value) {
+  if (triggerNode.value && popperNode.value) {
     popperInstance = createPopper(
-      _triggerNode.value,
+      triggerNode.value,
       popperNode.value,
       popperOptions.value
     )
@@ -154,17 +166,30 @@ watch(visible, (val) => {
 
 watch(() => props.manual, (isManual) => {
   if (isManual) {
-    resetEvents()
+    events.value = {}
+    outerEvents.value = {}
+    dropdownEvents.value = {}
     return
   }
   attachEvents()
 })
 
-watch(() => props.trigger, (val, oldValue) => {
+watch(() => props.trigger, (newTrigger, oldTrigger) => {
+  if (newTrigger === oldTrigger) return
+  resetEvents()
+})
+
+watch(() => props.disabled, (val, oldValue) => {
   if (val === oldValue) return
   openDebounce?.cancel()
+  visible.value = false
   emits('visible-change', false)
   resetEvents()
+})
+
+useEventToTriggerNode(props, triggerNode, events, () => {
+  openDebounce?.cancel()
+  setVisible(false)
 })
 
 onUnmounted(() => {
@@ -175,6 +200,7 @@ defineExpose<tooltipInstance>({
   show,
   hide
 })
+
 </script>
 
 <template>

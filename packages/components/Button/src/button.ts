@@ -5,6 +5,7 @@ export type buttonSize = 'small' | 'default' | 'large'
 export type nativeType = 'button' | 'submit' | 'reset'
 
 export interface buttonProps {
+  id?: string
   tag?: string | VNode
   type?: buttonType
   size?: buttonSize

@@ -1,13 +1,20 @@
 import type {Plugin} from 'vue'
 import {describe, expect, it} from 'vitest'
-import {ErAlert, ErButton, ErCollapse, ErIcon} from '../'
 import {get, map} from "lodash-es";
+import {
+  ErAlert,
+  ErButton,
+  ErCollapse,
+  ErIcon,
+  ErTooltip
+} from '../'
 
 const comps: Plugin[] = [
   ErAlert,
   ErButton,
   ErCollapse,
-  ErIcon
+  ErIcon,
+  ErTooltip
 ]
 
 describe('components/index', () => {

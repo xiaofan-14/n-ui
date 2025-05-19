@@ -26,6 +26,9 @@ importers:
       '@learn-ui-to-me/utils':
         specifier: workspace:*
         version: link:packages/utils
+      '@learn-ui-to-me/vite-plugins':
+        specifier: workspace:*
+        version: link:libs/vite-plugins
       '@vitejs/plugin-vue-jsx':
         specifier: ^4.1.2
         version: 4.1.2(vite@6.3.4(@types/node@22.15.3)(jiti@2.4.2)(sass@1.88.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.3))
@@ -112,6 +115,8 @@ importers:
         specifier: ^3.1.2
         version: 3.1.2(@types/node@22.15.3)(jiti@2.4.2)(jsdom@26.1.0)(sass@1.88.0)(terser@5.39.0)
 
+  libs/vite-plugins: {}
+
   libs/vitepress-preview-component:
     dependencies:
       vitepress:
@@ -158,6 +163,9 @@ importers:
       '@learn-ui-to-me/components':
         specifier: workspace:*
         version: link:../components
+      '@learn-ui-to-me/vite-plugins':
+        specifier: workspace:*
+        version: link:../../libs/vite-plugins
       '@rollup/plugin-terser':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.40.1)
@@ -183,7 +191,11 @@ importers:
         specifier: ^1.6.3
         version: 1.6.3(@algolia/client-search@5.24.0)(@types/node@22.15.3)(async-validator@4.2.5)(postcss@8.5.3)(sass@1.88.0)(search-insights@2.17.3)(terser@5.39.0)(typescript@5.8.3)
 
-  packages/hooks: {}
+  packages/hooks:
+    dependencies:
+      '@learn-ui-to-me/vite-plugins':
+        specifier: workspace:*
+        version: link:../../libs/vite-plugins
 
   packages/playground:
     devDependencies:

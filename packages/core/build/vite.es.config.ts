@@ -2,12 +2,12 @@ import {defineConfig} from 'vite'
 import {resolve} from 'path'
 import {readdir, readdirSync} from "fs";
 import {defer, delay, filter, map} from "lodash-es";
-import hooks from './hooksPlugin'
 import shell from "shelljs";
 import dts from "vite-plugin-dts";
 import vue from '@vitejs/plugin-vue'
 import terser from '@rollup/plugin-terser'
 import { visualizer } from "rollup-plugin-visualizer"
+import { hooksPlugin as hooks } from "@learn-ui-to-me/vite-plugins"
 
 const TRY_MOVE_STYLE_DELAY = 800
 

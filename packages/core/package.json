@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@learn-ui-to-me/components": "workspace:*",
+    "@learn-ui-to-me/vite-plugins": "workspace:*",
     "@rollup/plugin-terser": "^0.4.4",
     "terser": "^5.39.0",
     "vite-plugin-compression2": "^1.3.3",

@@ -45,6 +45,7 @@
     "@learn-ui-to-me/theme": "workspace:*",
     "@learn-ui-to-me/utils": "workspace:*",
     "@vitepress-preview/component": "workspace:*",
+    "@learn-ui-to-me/vite-plugins": "workspace:*",
     "@vitejs/plugin-vue-jsx": "^4.1.2",
     "learn-ui-to-me": "workspace:*",
     "lodash-es": "^4.17.21",

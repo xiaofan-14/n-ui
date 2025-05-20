@@ -24,7 +24,7 @@ describe('hooks/useClickOutSide', () => {
     expect(handler).toHaveBeenCalledOnce()
   })
   it('should handle null elementRef', async () => {
-    const target = ref<HTMLElement | null>(null)
+    const target = ref<HTMLElement | undefined>()
     const handler = vi.fn()
     mount(
       defineComponent({

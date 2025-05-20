@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
-    "test": "vitest --run --coverage",
+    "test": "vitest --run --coverage --environment jsdom",
     "build": "vite build"
   },
   "keywords": [],

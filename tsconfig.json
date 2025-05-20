@@ -21,9 +21,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "@learn-ui-to-me/vite-plugins": ["./libs/vite-plugins/.dist"]
-    }
   },
   "include": ["end.d.ts", "packages/**/*.ts", "packages/**/*.tsx", "packages/**/*.vue"]
 }

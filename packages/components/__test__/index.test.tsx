@@ -7,7 +7,7 @@ import {
   ErCollapse,
   ErIcon,
   ErTooltip
-} from '../'
+} from '../index'
 
 const comps: Plugin[] = [
   ErAlert,

@@ -40,7 +40,7 @@ const emits = defineEmits<tooltipEmits>()
 
 const visible = ref(false)
 
-const containerNode = ref<HTMLElement | null>(null)
+const containerNode = ref<HTMLElement>()
 const _triggerNode = ref<HTMLElement>()
 const popperNode = ref<HTMLElement>()
 

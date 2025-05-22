@@ -13,7 +13,7 @@
     "test:utils": "cross-env NODE_ENV=test pnpm --filter @learn-ui-to-me/utils test",
     "build": "run-s build-hooks build-components",
     "build-hooks": "cross-env NODE_ENV=production pnpm --filter @learn-ui-to-me/hooks build",
-    "build-components": "cross-env NODE_ENV=production pnpm --filter @earn-ui-to-me build",
+    "build-components": "cross-env NODE_ENV=production pnpm --filter learn-ui-to-me build",
     "build:dev": "run-s build-hooks:dev build-components:dev",
     "build-hooks:dev": "cross-env NODE_ENV=development pnpm --filter @learn-ui-to-me/hooks build",
     "build-components:dev": "cross-env NODE_ENV=development pnpm --filter learn-ui-to-me build:watch"

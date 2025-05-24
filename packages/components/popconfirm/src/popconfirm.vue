@@ -6,6 +6,7 @@ import { ErTooltip } from '../../tooltip'
 import { ErButton } from '../../button'
 import { ErIcon } from '../../icon'
 import { addUnit } from '@learn-ui-to-me/utils'
+import { useLocale } from '@learn-ui-to-me/hooks'
 
 defineOptions({
   name: 'ErPopconfirm'
@@ -14,8 +15,6 @@ defineOptions({
 const props = withDefaults(defineProps<popconfirmProps>(), {
   title: "",
   confirmButtonType: "primary",
-  cancelButtonText: "No",
-  confirmButtonText: "Yes",
   icon: "question-circle",
   iconColor: "#f90",
   hideAfter: 200,
@@ -24,8 +23,9 @@ const props = withDefaults(defineProps<popconfirmProps>(), {
 const emits = defineEmits<popconfirmEmits>()
 const tooltipRef = ref<tooltipInstance>()
 
-
 const style = computed(() => ({ width: addUnit(props.width) }))
+
+const locale = useLocale()
 
 function hidePopper() {
   tooltipRef.value?.hide()
@@ -57,10 +57,10 @@ defineExpose({
         </div>
         <div class="er-popconfirm__action">
           <er-button class="er_popconfirm__cancel" size="small" :type="cancelButtonType" @click="cancel">
-            {{ cancelButtonText }}
+            {{ cancelButtonText || locale.t('popconfirm.confirmButtonText') }}
           </er-button>
           <er-button class="er_popconfirm__confirm" size="small" :type="confirmButtonType" @click="confirm">
-            {{ confirmButtonText }}
+            {{ confirmButtonText || locale.t('popconfirm.cancelButtonText') }}
           </er-button>
         </div>
       </div>

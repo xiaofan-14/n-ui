@@ -23,6 +23,9 @@ importers:
       '@learn-ui-to-me/hooks':
         specifier: workspace:*
         version: link:packages/hooks
+      '@learn-ui-to-me/locale':
+        specifier: workspace:*
+        version: link:packages/locale
       '@learn-ui-to-me/theme':
         specifier: workspace:*
         version: link:packages/theme
@@ -199,6 +202,8 @@ importers:
       vue:
         specifier: ^3.5.13
         version: 3.5.14(typescript@5.8.3)
+
+  packages/locale: {}
 
   packages/playground:
     devDependencies:

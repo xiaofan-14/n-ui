@@ -50,6 +50,7 @@
     "@learn-ui-to-me/hooks": "workspace:*",
     "@learn-ui-to-me/theme": "workspace:*",
     "@learn-ui-to-me/utils": "workspace:*",
+    "@learn-ui-to-me/locale": "workspace:*",
     "@learn-ui-to-me/vite-plugins": "workspace:*",
     "@vitejs/plugin-vue-jsx": "^4.1.2",
     "@vitepress-preview/component": "workspace:*",

@@ -1,4 +1,4 @@
-import type { VNode, ComponentInternalInstance } from "vue";
+import type { VNode, ComponentInternalInstance, Ref } from "vue";
 
 export const messageTypes = [
   "info",
@@ -38,7 +38,7 @@ export interface MessageProps {
   offset?: number;
   zIndex: number;
   transitionName?: string;
-  onDestory(): void;
+  onDestroy(): void;
 }
 
 export type MessageOptions = Partial<Omit<MessageProps, "id">>;
@@ -50,6 +50,11 @@ export interface MessageInstance {
   props: MessageProps;
   vm: ComponentInternalInstance;
   handler: MessageHandler;
+}
+
+export interface MessageComInstance {
+  close(): void
+  bottomOffset: Ref<number>
 }
 
 export type CreateMessageProps = Omit<

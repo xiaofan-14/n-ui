@@ -25,3 +25,10 @@ export const renderVNode = defineComponent({
     return () => (isFunction(props.vNode) ? props.vNode() : props.vNode )
   }
 })
+
+export function withInstallFunction<T>(fn: T, name:string){
+  (fn as SFCWithInstall<T>).install = (app: App) => {
+    app.config.globalProperties[name] = fn
+  }
+  return fn as SFCWithInstall<T>
+}

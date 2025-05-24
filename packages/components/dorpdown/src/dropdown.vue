@@ -4,6 +4,7 @@ import { omit, isNull } from 'lodash-es'
 import { ErTooltip } from '../../tooltip'
 import { ErButtonGroup, ErButton } from '../../button'
 import { DROPDOWN_CTX_KEY } from './constants'
+import { useDisabledStyle } from '@learn-ui-to-me/hooks'
 import ErDropdownItem from './dropdownItem.vue'
 import type {
   dropdownProps,
@@ -30,9 +31,9 @@ const emits = defineEmits<dropdownEmits>()
 const slots = defineSlots()
 
 const tooltipRef = ref<tooltipInstance>()
-const triggerRef = ref<buttonInstance>()
+const triggerRef = ref<buttonInstance | void>(void 0)
 
-const virtualRef = computed(() => triggerRef.value?.ref ?? null)
+const virtualRef = computed(() => triggerRef.value?.ref ?? void 0)
 const tooltipProps = computed(() => {
   return omit(props, ['items', 'hideAfterClick', 'size', 'type', 'splitButton'])
 })
@@ -41,6 +42,8 @@ function handleItemClick(e: dropdownItemProps) {
   props.hideOnClick && tooltipRef.value?.hide()
   isNull(e.command) && emits('command', e.command)
 }
+
+!TEST && useDisabledStyle()
 
 provide<dropdownContext>(DROPDOWN_CTX_KEY, {
   handleItemClick,
@@ -57,7 +60,7 @@ defineExpose<dropdownInstance>({
   <div class="er-dropdown" :class="{
     'is-disabled': props.disabled
   }">
-    <ErTooltip ref="tooltipRef" v-bind="tooltipProps" :virtual-triggering="splitButton" :virtual-ref="virtualRef!.value"
+    <ErTooltip ref="tooltipRef" v-bind="tooltipProps" :virtual-triggering="splitButton" :virtual-ref="virtualRef"
       @:visible-change="$emit('visible-change', $event)">
 
       <ErButtonGroup v-if="splitButton" :type="type" :size="size" :disabled="disabled">

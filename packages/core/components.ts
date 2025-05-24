@@ -6,9 +6,11 @@ import {
   ErCollapseItem,
   ErAlert,
   ErTooltip,
-  ErPopconfirm
+  ErPopconfirm,
+  ErDropdown,
+  ErDropdownItem,
 } from '@learn-ui-to-me/components'
-import type {Plugin} from 'vue'
+import type { Plugin } from 'vue'
 
 export default [
   ErButton,
@@ -18,5 +20,7 @@ export default [
   ErCollapseItem,
   ErAlert,
   ErTooltip,
-  ErPopconfirm
+  ErPopconfirm,
+  ErDropdown,
+  ErDropdownItem,
 ] as Plugin[]

@@ -38,4 +38,13 @@ describe('Message', ()=>{
     await rAF()
     expect(document.querySelector('.er-message')).toBeFalsy()
   })
+
+  it('message offset', ()=>{
+    message({
+      message:'hello msg',
+      duration: 0
+    })
+    const wrapper = document.querySelector('.er-message')
+    getTopValue(wrapper as HTMLElement)
+  })
 })

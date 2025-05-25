@@ -10,7 +10,8 @@ import {
   ErDropdown,
   ErDropdownItem,
   ErConfigProvider,
-  ErMessage
+  ErMessage,
+  ErNotification
 } from '@learn-ui-to-me/components'
 import type { Plugin } from 'vue'
 
@@ -26,5 +27,6 @@ export default [
   ErDropdown,
   ErDropdownItem,
   ErConfigProvider,
-  ErMessage
+  ErMessage,
+  ErNotification
 ] as Plugin[]

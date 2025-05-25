@@ -27,7 +27,8 @@ const boxHeight = ref(0)
 const iconName = computed(() => typeIconMap.get(props.type) ?? 'circle-icon')
 
 const customStyle = computed(() => ({
-  top: addUnit(topOffset.value)
+  top: addUnit(topOffset.value),
+  zIndex: props.zIndex
 }))
 
 const { topOffset, bottomOffset } = useOffset({

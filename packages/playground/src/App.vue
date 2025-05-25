@@ -8,12 +8,14 @@ const open2 = () => {
   ErMessage({
     message: "Congrats, this is a success message.",
     type: "success",
+    showClose: true
   });
 };
 const open3 = () => {
   ErMessage({
     message: "Warning, this is a warning message.",
     type: "warning",
+    showClose: true
   });
 };
 const open4 = () => {

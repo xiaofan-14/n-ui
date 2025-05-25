@@ -105,4 +105,3 @@ each(messageTypes, (type) => {
 message.closeAll = closeAll
 
 export default message as Message
-

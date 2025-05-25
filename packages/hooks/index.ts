@@ -1,3 +1,4 @@
+import useFocusController from "./useFocusController"
 import useClickOutSide from "./useClickOutSide"
 import useEventListener from "./useEventListener"
 import useDisabledStyle from './useDisabledStyle'
@@ -7,6 +8,7 @@ import useZIndex from './useZIndex'
 import useId from "./useId"
 
 export {
+  useFocusController,
   useClickOutSide,
   useEventListener,
   useDisabledStyle,

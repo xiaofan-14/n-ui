@@ -1,19 +1,18 @@
-<script lang="ts" setup>
-import { reactive } from 'vue'
+<script setup lang="ts">
+import { ErMessageBox, ErMessage } from "learn-ui-to-me";
 
-const data = reactive({
-  name: '',
-  desc: ''
-})
+function openConfirm() {
+  ErMessageBox
+    .confirm("proxy will permanently delete the file. Continue?", "Warning", { type: "warning" })
+    .then((action: any) => {
+      ErMessage.info(`action: ${action}`);
+    })
+    .catch((action: any) => {
+      ErMessage.warning(`action: ${action}`);
+    });
+}
 </script>
 
 <template>
-  <div>
-    <span>姓名: 密码框</span>
-    <er-input v-model="data.name" show-password type="password" />
-  </div>
-  <div>
-    <span>描述: 文本域</span>
-    <er-input v-model="data.desc" type="textarea" />
-  </div>
+  <er-button @click="openConfirm" plain> Click to open the Confirm</er-button>
 </template>

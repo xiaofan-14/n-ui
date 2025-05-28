@@ -13,7 +13,8 @@ import {
   ErMessage,
   ErNotification,
   ErInput,
-  ErMessageBox
+  ErMessageBox,
+  ErLoading
 } from '@learn-ui-to-me/components'
 import type { Plugin } from 'vue'
 
@@ -32,5 +33,6 @@ export default [
   ErMessage,
   ErNotification,
   ErInput,
-  ErMessageBox
+  ErMessageBox,
+  ErLoading
 ] as Plugin[]

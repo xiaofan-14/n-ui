@@ -3,7 +3,6 @@ import {
   debugWarn,
   throwError,
   withInstall,
-  setupInstall,
   typeIconMap
 } from '../'
 import {each} from "lodash-es"
@@ -19,10 +18,6 @@ describe('utils/index',()=>{
 
   it('withInstall should be exported',()=>{
     expect(withInstall).toBeDefined()
-  })
-
-  it('setupInstall should be exported',()=>{
-    expect(setupInstall).toBeDefined()
   })
 
   it('typeIconMap should be worked',()=>{

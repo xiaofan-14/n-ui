@@ -4,6 +4,7 @@ import {last,split,first, includes} from "lodash-es";
 import dts from "vite-plugin-dts";
 import vue from '@vitejs/plugin-vue'
 import { hooksPlugin as hooks } from "@learn-ui-to-me/vite-plugins"
+import vueJsx  from '@vitejs/plugin-vue-jsx'
 
 export default defineConfig({
   plugins: [
@@ -15,6 +16,7 @@ export default defineConfig({
     hooks({
       rmFiles: ['./dist'],
     }),
+    vueJsx()
   ],
   build: {
     minify: false,

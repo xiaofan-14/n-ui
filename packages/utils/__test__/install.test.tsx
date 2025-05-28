@@ -2,7 +2,7 @@ import {describe, expect, it} from 'vitest'
 import {mount} from '@vue/test-utils'
 import {defineComponent, createApp} from "vue"
 
-import {withInstall, setupInstall} from '../'
+import {withInstall} from '../'
 
 const appComp = defineComponent({
   setup() {
@@ -31,15 +31,5 @@ describe('install ', () => {
     expect(compB.install).toBeDefined()
     expect(app._context.components['compA']).toBeTruthy()
     expect(app._context.components['compB']).toBeFalsy()
-  })
-
-  it('setupInstall should be worked', ()=>{
-    const wrapper = mount(()=><div id='app'></div>)
-    const app = createApp(appComp)
-    const installer = setupInstall([compA, compB])
-    app.use(installer).mount(wrapper.element)
-    expect(installer).toBeDefined()
-    expect(app._context.components['compA']).toBeTruthy()
-    expect(app._context.components['compB']).toBeTruthy()
   })
 })

@@ -1,4 +1,4 @@
-import { describe, expect, it, vi, beforeEach } from "vitest";
+import { describe, expect, it, vi, beforeEach, test } from "vitest";
 import { mount } from "@vue/test-utils";
 import { ErPopconfirm } from "../";
 import type { popconfirmProps } from "../";
@@ -36,58 +36,65 @@ describe("Popconfirm.vue", () => {
       expect(get(wrapper.props(), key)).toEqual(value);
     });
   });
-  it('popconfirm emits',async ()=>{
-    const wrapper = mount(()=>(
+
+  test("popconfirm emits", async () => {
+    const wrapper = mount(() => (
       <div>
         <div id="outside"></div>
-        <ErPopconfirm
-         title="Test Title"
-         hideIcon={true}
-         onConfirm={onConfirm}
-         onCancel={onCancel}
+        <Popconfirm
+          title="Test Title"
+          hideIcon={true}
+          onConfirm={onConfirm}
+          onCancel={onCancel}
         >
-          <button id="trigger"></button>
-        </ErPopconfirm>
+          <button id="trigger">trigger</button>
+        </Popconfirm>
       </div>
-    ))
+    ));
+    const triggerArea = wrapper.find("#trigger");
+    expect(triggerArea.exists()).toBeTruthy();
 
-    const trigger = wrapper.find('#trigger')
-    expect(trigger.exists()).toBeTruthy()
+    triggerArea.trigger("click");
+    vi.runAllTimers();
 
-    trigger.trigger('click')
-    await vi.runAllTimers()
+    // 弹出层是否出现
+    expect(wrapper.find(".er-popconfirm").exists()).toBeTruthy();
+    const confirmButton = wrapper.find(".er-popconfirm__confirm");
+    expect(confirmButton.exists()).toBeTruthy();
 
-    expect(wrapper.find('.er-popconfirm').exists()).toBeTruthy()
-    const confirmBtn = wrapper.find('.er-popconfirm__confirm')
-    expect(confirmBtn.exists()).toBeTruthy()
+    confirmButton.trigger("click");
+    await vi.runAllTimers();
+    expect(wrapper.find(".er-popconfirm").exists()).toBeFalsy();
+    expect(onConfirm).toBeCalled();
 
-    confirmBtn.trigger('click')
-    await vi.runAllTimers()
-    expect(wrapper.find('.er-popconfirm').exists()).toBeFalsy()
-    expect(onConfirm).toBeCalled()
+    triggerArea.trigger("click");
+    await vi.runAllTimers();
+    expect(wrapper.find(".er-popconfirm").exists()).toBeTruthy();
+    const cancelButton = wrapper.find(".er-popconfirm__cancel");
+    expect(cancelButton.exists()).toBeTruthy();
 
-    const cancelBtn = wrapper.find('.er-popconfirm__cancel')
-    expect(cancelBtn.exists()).toBeTruthy()
-
-    cancelBtn.trigger('click')
-    await vi.runAllTimers()
-    expect(wrapper.find('.er-popconfirm').exists()).toBeFalsy()
-    expect(onCancel).toBeCalled()
-
-  })
+    await vi.runAllTimers();
+    cancelButton.trigger("click");
+    await vi.runAllTimers();
+    expect(wrapper.find(".er-popconfirm").exists()).toBeFalsy();
+    expect(onCancel).toBeCalled();
+  });
 });
 
 describe("Popconfirm/index.ts", () => {
   it("should be exported with withInstal", () => {
-    expect(ErPopconfirm.install).toBeCalled();
+    expect(ErPopconfirm.install).toBeDefined();
   });
+
   it("should be exported popconfirm component", () => {
     expect(ErPopconfirm).toBe(Popconfirm);
   });
+
   it("should enhance popconfirm component", () => {
     const enhancedPopconfirm = withInstall(Popconfirm);
     expect(enhancedPopconfirm).toBe(Popconfirm);
   });
+
   it("should apply specifiy enhancements", () => {
     const enhancedPopconfirm = withInstall(Popconfirm);
     expect(enhancedPopconfirm).toHaveProperty("install");

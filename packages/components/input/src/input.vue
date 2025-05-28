@@ -40,7 +40,7 @@ const isDisabled = computed(() => props.disabled)
 const attrs = useAttrs()
 
 const showClear = computed(() => props.clearable && !!innerValue.value && !isDisabled.value && isFocused.value)
-const showPwsArea = computed(() => props.type === 'password' && props.showPassword && !isDisabled && !!innerValue.value)
+const showPwsArea = computed(() => props.type === 'password' && props.showPassword && !isDisabled.value && !!innerValue.value)
 
 const inputRef = shallowRef<HTMLInputElement>()
 const textareaRef = shallowRef<HTMLTextAreaElement>()

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { ErLoading } from "learn-ui-to-me";
+import { ErLoading, ErIcon } from "learn-ui-to-me";
 
 const loading = ref(false);
 

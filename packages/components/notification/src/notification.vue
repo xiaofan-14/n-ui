@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { ErIcon } from '../../icon'
 import { delay } from 'lodash-es'
-import { typeIconMap, addUnit } from '@learn-ui-to-me/utils'
+import { typeIconMap, addUnit, renderVNode } from '@learn-ui-to-me/utils'
 import { useOffset } from '@learn-ui-to-me/hooks'
 import { getLastBottomOffset } from './methods'
 import { bind } from 'lodash-es'
@@ -33,7 +33,7 @@ const horizontalClass = computed(()=>
 )
 
 const verticalProperty = computed(()=>
-  props.position.endsWith('top') ? 'top' : 'buttom'
+  props.position.startsWith('top') ? 'top' : 'bottom'
 )
 
 const { topOffset, bottomOffset } = useOffset({
@@ -94,7 +94,7 @@ defineExpose<NotificationCompInstance>({
         <div class="er-notification__title">{{ title }}</div>
         <div class="er-notification__content">
           <slot>
-            <render-vnode v-if="message" :vNode="message" />
+            <renderVNode v-if="message" :vNode="message" />
           </slot>
         </div>
       </div>

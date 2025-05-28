@@ -21,7 +21,7 @@ export interface dropdownProps extends tooltipProps {
 
 export interface dropdownEmits {
   (e: 'visible-change', value: MouseEvent): void
-  (e: 'command', value: MouseEvent): void
+  (e: 'command', value: dropdownCommand): void
   (e: 'click', value: MouseEvent): void
 }
 

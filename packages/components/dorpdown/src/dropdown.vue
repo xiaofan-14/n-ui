@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, provide } from 'vue'
-import { omit, isNull } from 'lodash-es'
+import { omit, isNil } from 'lodash-es'
 import { ErTooltip } from '../../tooltip'
 import { ErButtonGroup, ErButton } from '../../button'
 import { DROPDOWN_CTX_KEY } from './constants'
@@ -40,7 +40,7 @@ const tooltipProps = computed(() => {
 
 function handleItemClick(e: dropdownItemProps) {
   props.hideOnClick && tooltipRef.value?.hide()
-  isNull(e.command) && emits('command', e.command)
+  !isNil(e.command) && emits('command', e.command)
 }
 
 !TEST && useDisabledStyle()
@@ -70,9 +70,9 @@ defineExpose<dropdownInstance>({
         <ErButton ref="triggerRef" icon="angle-down" />
       </ErButtonGroup>
 
-      <slot name="default" v-else>
-
-      </slot>
+      <!-- <template v-else> -->
+        <slot e-else name="default"></slot>
+      <!-- </template> -->
 
       <template #content>
         <div class="er-dropdown__menu">

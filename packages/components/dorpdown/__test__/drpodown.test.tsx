@@ -120,6 +120,4 @@ describe("Dropdown.vue", () => {
     expect(wrapper.find(".er-dropdown__menu").exists()).toBeFalsy();
     expect(onClick).toBeCalled();
   });
-
-
 });

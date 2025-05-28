@@ -62,8 +62,6 @@ function removeLoadingNumber(target: HTMLElement = document.body) {
 }
 
 function createLoading(opts: LoadingOptionsResolved) {
-    console.log('opts => ', opts);
-
   const visible = ref(opts.visible)
   const afterLeaveFlag = ref(false)
   const handleAfterLeave = () => {

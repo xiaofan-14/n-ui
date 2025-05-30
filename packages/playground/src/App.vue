@@ -13,9 +13,15 @@
     </er-popconfirm>
   </div>
 </ErConfigProvider>
+
+<er-switch v-model="custom" size="small" />
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { ref} from 'vue'
+
+const custom = ref(true)
+
 function handleConfirm() {
   console.log('✅ Confirm clicked');
 }

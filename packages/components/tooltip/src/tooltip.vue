@@ -169,6 +169,10 @@ watch(() => props.manual, (isManual) => {
     events.value = {}
     outerEvents.value = {}
     dropdownEvents.value = {}
+
+    openDebounce?.cancel()
+    setVisible(false)
+
     return
   }
   attachEvents()
@@ -223,7 +227,6 @@ defineExpose<tooltipInstance>({
       </div>
     </transition>
   </div>
-
 </template>
 
 <style scoped>

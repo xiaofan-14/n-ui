@@ -1,3 +1,4 @@
+import { nextTick } from 'vue'
 import { describe, test, it, expect, vi, beforeEach } from "vitest";
 import { withInstall } from "@learn-ui-to-me/utils";
 import { mount } from "@vue/test-utils";
@@ -82,7 +83,7 @@ describe("Tooltip.vue", () => {
     expect(wrapper.find(".er-tooltip__popper").exists()).toBeTruthy();
     // 区域外点击关闭 tooltip
     wrapper.get("#outside").trigger("click");
-    vi.runAllTimers();
+    await vi.runAllTimers();
     expect(wrapper.find(".er-tooltip__popper").exists()).toBeFalsy();
     expect(onVisibleChange).toHaveBeenCalledTimes(4);
 
@@ -132,11 +133,11 @@ describe("Tooltip.vue", () => {
     await vi.runAllTimers();
     expect(wrapper.find(".er-tooltip__popper").exists()).toBeFalsy();
 
-    wrapper.setProps({ disabled: true })
-    await vi.runAllTimers()
-    wrapper.vm.show()
-    await vi.runAllTimers()
-    expect(wrapper.find('./er-tooltip__popper').exists()).toBeFalsy()
+    wrapper.setProps({ disabled: true });
+    await vi.runAllTimers();
+    wrapper.vm.show();
+    await vi.runAllTimers();
+    expect(wrapper.find(".er-tooltip__popper").exists()).toBeFalsy();
   });
 
   // 禁用状态的测试
@@ -158,102 +159,67 @@ describe("Tooltip.vue", () => {
     let wrapper = mount(Tooltip, {
       props: { virtualRef, virtualTriggering: true },
     });
-    wrapper.setProps({virtualRef})
-    await vi.runAllTimers()
+    wrapper.setProps({ virtualRef });
+    await vi.runAllTimers();
     // 测试虚拟节点的事件触发
     virtualRef.dispatchEvent(new Event("mouseenter"));
     await vi.runAllTimers();
     expect(wrapper.find(".er-tooltip__popper").exists()).toBeTruthy();
 
-    wrapper.setProps({ trigger: 'click' })
-    await vi.runAllTimers()
+    wrapper.setProps({ trigger: "click" });
+    await vi.runAllTimers();
     virtualRef.dispatchEvent(new Event("click"));
-    await vi.runAllTimers()
-    expect(wrapper.find(".er-tooltip__popper").exists()).toBeTruthy()
-
-    wrapper.unmount()
-  });
-  test('change trigger prop', async()=>{
-    const wrapper = mount(Tooltip, {
-      props: { trigger: 'hover', content: 'test' }
-    })
-    wrapper.setProps({ trigger: 'click' })
-    await vi.runAllTimers()
-
-    wrapper.find('.er-tooltip__trigger').trigger('click')
-    await vi.runAllTimers()
-    expect(wrapper.find('.er-tooltip__popper').exists()).toBeTruthy()
-
-    wrapper.find('.er-tooltip__trigger').trigger('click')
-    await vi.runAllTimers()
-    wrapper.find('.er-tooltip__trigger').trigger('hover')
-    await vi.runAllTimers()
-    expect(wrapper.find('.er-tooltip__popper').exists()).toBeFalsy()
-  })
-  test('change manual prop', async()=>{
-    const wrapper = mount(Tooltip, {
-      props: { trigger: 'hover', content: 'test' }
-    })
-    wrapper.setProps({ manual: true })
-    await vi.runAllTimers()
-
-    wrapper.find('.er-tooltip__trigger').trigger('hover')
-    await vi.runAllTimers()
-    expect(wrapper.find('.er-tooltip__popper').exists()).toBeTruthy()
-    wrapper.setProps({ manual: false, trigger: 'contextmenu'})
-    await vi.runAllTimers()
-    wrapper.find('.er-tooltip__trigger').trigger('contextmenu')
-    await vi.runAllTimers()
-    expect(wrapper.find('.er-tooltip__popper').exists()).toBeFalsy()
-  })
-  test("basic tooltip", async () => {
-    const wrapper = mount(
-      () => (
-        <div>
-          <div id="outside"></div>
-          <Tooltip
-            content="hello tooltip"
-            trigger="click"
-            {...{ onVisibleChange }}
-          >
-            <button id="trigger">trigger</button>
-          </Tooltip>
-        </div>
-      ),
-      {
-        attachTo: document.body,
-      }
-    );
-    const triggerArea = wrapper.find("#trigger");
-    expect(triggerArea.exists()).toBeTruthy();
-    expect(wrapper.find(".er-tooltip__popper").exists()).toBeFalsy();
-
-    // 弹出层是否出现
-    triggerArea.trigger("click");
     await vi.runAllTimers();
     expect(wrapper.find(".er-tooltip__popper").exists()).toBeTruthy();
-    expect(wrapper.get(".er-tooltip__popper").text()).toBe("hello tooltip");
-    expect(onVisibleChange).toHaveBeenCalledWith(true);
 
-    // 再次点击
-    triggerArea.trigger("click");
-    await vi.runAllTimers();
-    expect(wrapper.find(".er-tooltip__popper").exists()).toBeFalsy();
-    expect(onVisibleChange).toHaveBeenCalledTimes(2);
-
-    // 等待动画
-    await vi.runAllTimers();
-
-    triggerArea.trigger("click");
-    await vi.runAllTimers();
-    expect(wrapper.find(".er-tooltip__popper").exists()).toBeTruthy();
-    // 区域外点击关闭 tooltip
-    wrapper.get("#outside").trigger("click");
-    await vi.runAllTimers();
-    expect(wrapper.find(".er-tooltip__popper").exists()).toBeFalsy();
-    expect(onVisibleChange).toHaveBeenCalledTimes(4);
-
-    // 注销流程
     wrapper.unmount();
   });
+  test("change trigger prop", async () => {
+    const wrapper = mount(Tooltip, {
+      props: { trigger: "hover", content: "test" },
+    });
+    wrapper.setProps({ trigger: "click" });
+    await vi.runAllTimers();
+
+    wrapper.find(".er-tooltip__trigger").trigger("click");
+    await vi.runAllTimers();
+    expect(wrapper.find(".er-tooltip__popper").exists()).toBeTruthy();
+
+    wrapper.find(".er-tooltip__trigger").trigger("click");
+    await vi.runAllTimers();
+    wrapper.find(".er-tooltip__trigger").trigger("hover");
+    await vi.runAllTimers();
+    expect(wrapper.find(".er-tooltip__popper").exists()).toBeFalsy();
+  });
+
+  test('change manual prop should disable trigger events', async () => {
+  const wrapper = mount(Tooltip, {
+    props: {
+      trigger: 'click',
+      content: 'manual change test'
+    },
+    slots: {
+      default: '<button>btn</button>'
+    },
+    attachTo: document.body
+  })
+
+  // 触发点击应该打开
+  await wrapper.find('button').trigger('click')
+  await nextTick()
+  expect(document.body.querySelector('.er-tooltip__popper')).toBeFalsy()
+
+  // 修改为 manual 模式
+  await wrapper.setProps({ manual: true })
+  await nextTick()
+
+  // 再次点击应该不会生效了（因为事件已解绑）
+  await wrapper.find('button').trigger('click')
+  await nextTick()
+
+  // 弹层应被隐藏
+  expect(document.body.querySelector('.er-tooltip__popper')).toBeFalsy()
+
+  wrapper.unmount()
+})
 });

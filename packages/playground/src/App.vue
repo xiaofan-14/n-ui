@@ -1,36 +1,26 @@
+<template>
+  <ErConfigProvider>
+
+    <div>
+      <div id="outside">外部区域</div>
+      <er-popconfirm
+      title="Test Title"
+      :hide-icon="true"
+      @confirm="handleConfirm"
+      @cancel="handleCancel"
+      >
+      <button id="trigger">trigger</button>
+    </er-popconfirm>
+  </div>
+</ErConfigProvider>
+</template>
+
 <script setup>
-import { ref } from "vue";
-import { ErLoading, ErIcon } from "learn-ui-to-me";
-
-const loading = ref(false);
-
-function openLoading1() {
-  loading.value = true;
-  setTimeout(() => {
-    loading.value = false;
-  }, 2000);
+function handleConfirm() {
+  console.log('✅ Confirm clicked');
 }
 
-function openLoading2() {
-  const _loading = ErLoading.service({
-    lock: true,
-    spinner: "circle-notch",
-    text: "加载中...",
-    background: "rgba(255,255,255,0.5)",
-  });
-  setTimeout(() => {
-    _loading.close();
-  }, 2000);
+function handleCancel() {
+  console.log('❌ Cancel clicked');
 }
 </script>
-
-<template>
-  <er-button
-    v-loading.fullscreen.lock="loading"
-    type="primary"
-    @click="openLoading1"
-  >
-    As a directive
-  </er-button>
-  <er-button type="primary" @click="openLoading2"> As a service </er-button>
-</template>

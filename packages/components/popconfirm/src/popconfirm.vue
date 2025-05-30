@@ -56,11 +56,11 @@ defineExpose({
           {{ title }}
         </div>
         <div class="er-popconfirm__action">
-          <er-button class="er_popconfirm__cancel" size="small" :type="cancelButtonType" @click="cancel">
-            {{ cancelButtonText || locale.t('popconfirm.confirmButtonText') }}
+          <er-button class="er-popconfirm__cancel" size="small" :type="cancelButtonType" @click="cancel">
+            {{ cancelButtonText || locale.t('popconfirm.cancelButtonText') }}
           </er-button>
-          <er-button class="er_popconfirm__confirm" size="small" :type="confirmButtonType" @click="confirm">
-            {{ confirmButtonText || locale.t('popconfirm.cancelButtonText') }}
+          <er-button class="er-popconfirm__confirm" size="small" :type="confirmButtonType" @click="confirm">
+            {{ confirmButtonText || locale.t('popconfirm.confirmButtonText') }}
           </er-button>
         </div>
       </div>

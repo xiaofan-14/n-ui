@@ -1,5 +1,6 @@
 {
   "name": "@learn-ui-to-me/theme",
+  "private": true,
   "version": "1.0.0",
   "main": "index.css"
 }

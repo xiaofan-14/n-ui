@@ -1,7 +1,7 @@
 {
   "name": "@learn-ui-to-me/locale",
   "version": "1.0.0",
-  "private": "true",
+  "private": true,
   "description": "",
   "main": "index.ts",
   "module": "index.ts",

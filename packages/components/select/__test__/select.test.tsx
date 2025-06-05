@@ -1,9 +1,9 @@
-import { rAF } from "@learn-ui-to-me/utils";
-import { describe, test, expect, vi } from "vitest";
-import { mount } from "@vue/test-utils";
-import { SELECT_CTX_KEY } from "../src/constants";
+import {rAF} from "@learn-ui-to-me/utils";
+import {describe, test, expect, vi} from "vitest";
+import {mount} from "@vue/test-utils";
+import {SELECT_CTX_KEY} from "../src/constants";
 
-import type { SelectOptionProps } from "../src/select";
+import type {SelectOptionProps} from "../src/select";
 
 import Select from "../src/select.vue";
 import Option from "../src/option.vue";
@@ -13,11 +13,11 @@ describe("Select", () => {
     const wrapper = mount(Select, {
       props: {
         modelValue: "",
-        options: [{ value: "1", label: "option 1" }],
+        options: [{value: "1", label: "option 1"}],
       },
     });
 
-    wrapper.find("input").trigger("click");
+    await wrapper.find("input").trigger("click");
 
     await rAF();
     expect(wrapper.text()).toContain("option 1");
@@ -27,7 +27,7 @@ describe("Select", () => {
     const wrapper = mount(Select, {
       props: {
         modelValue: "",
-        options: [{ value: "1", label: "option 1" }],
+        options: [{value: "1", label: "option 1"}],
       },
     });
 

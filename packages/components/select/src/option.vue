@@ -12,7 +12,7 @@ defineOptions({
 const props = withDefaults(defineProps<SelectOptionProps>(), {
   disabled: false
 })
-console.log('props', props)
+
 const ctx = inject(SELECT_CTX_KEY)
 
 const selected = computed(()=>
@@ -33,7 +33,7 @@ function handleClick(){
 
 <template>
   <li
-  class="er-select_menu-item"
+  class="er-select__menu-item"
   :class="{
     'is-disabled': disabled,
     'is-selected': selected,
@@ -43,7 +43,7 @@ function handleClick(){
   @click.stop="handleClick"
   >
     <slot>
-      <renderVNode :v-node="ctx?.renderLabel ? ctx?.renderLabel(props) : label" />
+      <render-v-node :v-node="ctx?.renderLabel ? ctx?.renderLabel(props) : label" />
     </slot>
   </li>
 </template>

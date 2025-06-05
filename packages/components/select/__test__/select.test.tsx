@@ -18,7 +18,6 @@ describe("Select", () => {
     });
 
     await wrapper.find("input").trigger("click");
-
     await rAF();
     expect(wrapper.text()).toContain("option 1");
   });

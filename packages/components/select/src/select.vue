@@ -235,7 +235,8 @@ function findOption(value: string) {
 
 function controlVisible(visible: boolean) {
   if (!tooltipRef.value) return
-  get(tooltipRef.value, ['value', visible ? 'show' : 'hide'])?.()
+
+  get(tooltipRef, ['value', visible ? 'show' : 'hide'])?.()
   props.filterable && controlInputVal(visible)
   isDropdownVisible.value = visible
   emits('visible-change', visible)
@@ -362,7 +363,7 @@ defineExpose<SelectInstance>({
           </template>
           <template v-else>
             <template v-for="[vNode, _props] in filteredChild" :key="_props.value">
-              <renderVNode :v-node="vNode"/>
+              <render-v-node :v-node="vNode"/>
             </template>
           </template>
         </ul>

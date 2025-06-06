@@ -49,7 +49,7 @@ export default defineConfig({
       compress: {
         sequences: isProd,
         arguments: isProd,
-        drop_console: isProd && ["log"],
+        // drop_console: isProd && ["log"],
         drop_debugger: isProd,
         passes: isProd ? 4 : 1,
         global_defs: {

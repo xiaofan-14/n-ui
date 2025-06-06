@@ -1,19 +1,60 @@
-<script setup lang="ts">
-import {ref, watchEffect} from 'vue'
+<script lang="ts" setup>
+import { reactive, ref } from "vue";
+import { ErMessage, type FormInstance } from "learn-ui-to-me";
+
+const formRef = ref<FormInstance>();
+const form = reactive({
+  name: "",
+  region: "",
+  delivery: false,
+  desc: "",
+});
 
 const options = ref([
-  { value: '北京', label: 'beijing' },
-  { value: '上海', label: 'shanghai' },
-  { value: '深证', label: 'shenzhen' },
-  { value: '杭州', label: 'hangzhou' },
-])
-const value = ref('')
+  { value: "beijing", label: "Zone One" },
+  { value: "shanghai", label: "Zone Two" },
+]);
 
-watchEffect(()=>{
-  console.log(value.value);
-})
+const rules = reactive({
+  name: [
+    { required: true, message: "请输入活动名称", trigger: "blur" },
+  ],
+});
+
+const onSubmit = () => {
+  formRef.value?.validate().then((valid) => {
+    if (valid) {
+      ErMessage.success("submit!");
+    }
+  }).catch(e => { console.error(e); });
+};
+
+const onReset = () => {
+  formRef.value?.resetFields();
+};
 </script>
-<template>
-  <er-select v-model="value" :options="options" clearable />
-</template>
 
+<template>
+  <er-form ref="formRef" :model="form" :rules="rules">
+    <er-form-item label="Activity name" prop="name">
+      <er-input v-model="form.name" />
+    </er-form-item>
+<!--    <er-form-item label="Activity zone" prop="region">-->
+    <!--      <er-select-->
+    <!--        v-model="form.region"-->
+    <!--        placeholder="please select your zone"-->
+    <!--        :options="options"-->
+    <!--      />-->
+    <!--    </er-form-item>-->
+    <!--    <er-form-item label="Instant delivery" prop="delivery">-->
+    <!--      <er-switch v-model="form.delivery" />-->
+    <!--    </er-form-item>-->
+    <!--    <er-form-item label="Activity form" prop="desc">-->
+    <!--      <er-input v-model="form.desc" type="textarea" />-->
+    <!--    </er-form-item>-->
+    <er-form-item>
+      <er-button type="primary" @click="onSubmit">Create</er-button>
+      <er-button @click="onReset">Reset</er-button>
+    </er-form-item>
+  </er-form>
+</template>

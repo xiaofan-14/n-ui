@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import {
-  useId,
-   useFocusController
-  } from '@learn-ui-to-me/hooks'
+  useFocusController
+} from '@learn-ui-to-me/hooks'
 import {
   ref,
   computed,
@@ -11,13 +10,19 @@ import {
   shallowRef,
   nextTick
 } from 'vue'
+import { ErIcon } from '../../icon'
+import { each, noop } from 'lodash-es'
+import {
+  useFormItem,
+  useFormDisabled,
+  useFormItemInputId
+} from '../../form'
+import { debugWarn } from '@learn-ui-to-me/utils'
 import type {
   InputProps,
   InputEmits,
   InputInstance
 } from './input'
-import { ErIcon } from '../../icon'
-import { each, noop } from 'lodash-es'
 
 defineOptions({
   name: 'ErInput',
@@ -29,13 +34,14 @@ const props = withDefaults(defineProps<InputProps>(), {
   autocomplete: 'off'
 })
 
-
 const emits = defineEmits<InputEmits>()
 
 const innerValue = ref(props.modelValue)
-const pwdVisiable = ref(false)
+const pwdVisible = ref(false)
+const isDisabled = useFormDisabled()
 
-const isDisabled = computed(() => props.disabled)
+const { formItem } = useFormItem()
+const { inputId } = useFormItemInputId(props, formItem)
 
 const attrs = useAttrs()
 
@@ -47,9 +53,10 @@ const textareaRef = shallowRef<HTMLTextAreaElement>()
 
 const _ref = computed(() => inputRef.value || textareaRef.value)
 
-const { isFocused, wrapperRef, handleBlur, handleFocus } = useFocusController(_ref, {
+const { isFocused, wrapperRef, handleBlur, handleFocus } =
+useFocusController(_ref, {
   afterBlur() {
-
+    formItem?.validate('blur').catch(err =>  debugWarn(err))
   },
 })
 
@@ -61,7 +68,7 @@ const clear:InputInstance['clear'] = function(){
   })
   emits('clear')
   // 清空表单校验
-  // ...
+  formItem?.clearValidate()
 }
 const focus:InputInstance['focus'] = async function(){
   await nextTick()
@@ -83,13 +90,14 @@ function handleChange(){
   emits('change', innerValue.value)
 }
 
-function togglePwdVisiable(){
-  pwdVisiable.value = !pwdVisiable.value
+function togglePwdVisible(){
+  pwdVisible.value = !pwdVisible.value
 }
 
 watch(()=>props.modelValue,(val)=>{
   innerValue.value = val
   // 触发表单校验
+  formItem?.validate('change').catch(err => debugWarn(err))
 })
 
 defineExpose<InputInstance>({
@@ -113,7 +121,7 @@ defineExpose<InputInstance>({
     'is-focus': isFocused,
   }">
     <template v-if="type === 'textarea'">
-      <textarea class="er-textarea__wrapper" ref="textareaRef" :id="useId().value" :disabled="isDisabled" :readonly="readonly"
+      <textarea class="er-textarea__wrapper" ref="textareaRef" :id="inputId" :disabled="isDisabled" :readonly="readonly"
         :autocomplete="autocomplete" :placeholder="placeholder" :autofocus="autofocus" :form="form" v-model="innerValue"
         v-bind="attrs" @input="handleInput" @change="handleChange" @focus="handleFocus" @blur="handleBlur">
       </textarea>
@@ -127,7 +135,7 @@ defineExpose<InputInstance>({
           <slot name="prefix"></slot>
         </span>
 
-        <input class="er-input__inner" ref="inputRef" :id="useId().value" :type="showPassword ? (pwdVisiable ? 'text' : 'password') : type"
+        <input class="er-input__inner" ref="inputRef" :id="inputId" :type="showPassword ? (pwdVisible ? 'text' : 'password') : type"
           :disabled="isDisabled" :readonly="readonly" :autocomplete="autocomplete" :placeholder="placeholder"
           :autofocus="autofocus" :form="form" v-model="innerValue" v-bind="attrs" @input="handleInput"
           @change="handleChange" @focus="handleFocus" @blur="handleBlur" />
@@ -135,10 +143,10 @@ defineExpose<InputInstance>({
         <span v-if="$slots.suffix || showClear || showPwsArea" class="er-input__suffix">
           <slot name="suffix"></slot>
           <er-icon icon="xmark" v-if="showClear" class="er-input__clear" @click="clear" @mousedown.prevent="noop" />
-          <er-icon icon="eye" v-if="showPwsArea && pwdVisiable" class="er-input__password" @click="togglePwdVisiable"
+          <er-icon icon="eye" v-if="showPwsArea && pwdVisible" class="er-input__password" @click="togglePwdVisible"
             @mousedown.prevent="noop" />
-          <er-icon icon="eye-slash" v-if="showPwsArea && !pwdVisiable" class="er-input__password"
-            @click="togglePwdVisiable" @mousedown.prevent="noop" />
+          <er-icon icon="eye-slash" v-if="showPwsArea && !pwdVisible" class="er-input__password"
+            @click="togglePwdVisible" @mousedown.prevent="noop" />
         </span>
       </div>
 

@@ -178,7 +178,7 @@ const validate: FormItemInstance['validate'] = async function (
     validateStatus.value = 'error'
     errorMsg.value = errors && size(errors) > 0 ? errors[0].message ?? "" : "";
     ctx?.emits("validate", props, false, errorMsg.value);
-    return false;
+    return Promise.reject(err);
   })
 }
 
@@ -268,9 +268,6 @@ defineExpose<FormItemInstance>({
         </template>
       </div>
     </div>
-  </div>
-  <div>
-   规则: {{ itemRules }}
   </div>
 </template>
 

@@ -17,7 +17,6 @@ import {
   useFormDisabled,
   useFormItemInputId
 } from '../../form'
-import { debugWarn } from '@learn-ui-to-me/utils'
 import type {
   InputProps,
   InputEmits,
@@ -55,8 +54,12 @@ const _ref = computed(() => inputRef.value || textareaRef.value)
 
 const { isFocused, wrapperRef, handleBlur, handleFocus } =
 useFocusController(_ref, {
-  afterBlur() {
-    formItem?.validate('blur').catch(err =>  debugWarn(err))
+  async afterBlur() {
+    try {
+      await formItem?.validate('blur');
+    } catch (_) {
+      // 在 input 输入框失焦验证表单时，如果有错误 Async Validation 会抛出异常，暂时不知道怎么解决先丢弃它
+    }
   },
 })
 
@@ -94,10 +97,12 @@ function togglePwdVisible(){
   pwdVisible.value = !pwdVisible.value
 }
 
-watch(()=>props.modelValue,(val)=>{
+watch(()=>props.modelValue,async (val)=>{
   innerValue.value = val
   // 触发表单校验
-  formItem?.validate('change').catch(err => debugWarn(err))
+  try {
+   await formItem?.validate('change')
+  } catch(_) {}
 })
 
 defineExpose<InputInstance>({

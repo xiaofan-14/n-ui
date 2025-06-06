@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive, ref } from "vue";
-import { ErMessage, type FormInstance } from "learn-ui-to-me";
+import {reactive, ref} from "vue";
+import {ErMessage, type FormInstance} from "learn-ui-to-me";
 
 const formRef = ref<FormInstance>();
 const form = reactive({
@@ -11,22 +11,23 @@ const form = reactive({
 });
 
 const options = ref([
-  { value: "beijing", label: "Zone One" },
-  { value: "shanghai", label: "Zone Two" },
+  {value: "beijing", label: "Zone One"},
+  {value: "shanghai", label: "Zone Two"},
 ]);
 
 const rules = reactive({
   name: [
-    { required: true, message: "请输入活动名称", trigger: "blur" },
+    {required: true, message: "请输入活动名称", trigger: "blur"},
   ],
 });
 
 const onSubmit = () => {
-  formRef.value?.validate().then((valid) => {
+  formRef.value?.validate()
+    .then((valid) => {
     if (valid) {
       ErMessage.success("submit!");
     }
-  }).catch(e => { console.error(e); });
+  }).catch(()=>{})
 };
 
 const onReset = () => {
@@ -37,9 +38,9 @@ const onReset = () => {
 <template>
   <er-form ref="formRef" :model="form" :rules="rules">
     <er-form-item label="Activity name" prop="name">
-      <er-input v-model="form.name" />
+      <er-input v-model="form.name"/>
     </er-form-item>
-<!--    <er-form-item label="Activity zone" prop="region">-->
+    <!--    <er-form-item label="Activity zone" prop="region">-->
     <!--      <er-select-->
     <!--        v-model="form.region"-->
     <!--        placeholder="please select your zone"-->

@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
-import { ErIcon } from '../../icon'
+import { NIcon } from '../../icon'
 import { delay } from 'lodash-es'
-import { typeIconMap, renderVNode, addUnit } from '@learn-ui-to-me/utils'
-import { useOffset, useEventListener } from '@learn-ui-to-me/hooks'
+import { typeIconMap, renderVNode, addUnit } from '@n-ui/utils'
+import { useOffset, useEventListener } from '@n-ui/hooks'
 import { getLastBottomOffset } from './methods'
 import { bind } from 'lodash-es'
 import type { MessageProps, MessageComInstance } from './message'
 
 defineOptions({
-  name: 'ErMessage'
+  name: 'NMessage'
 })
 
 const props = withDefaults(defineProps<MessageProps>(), {
@@ -43,6 +43,7 @@ function startTimer() {
   if (props.duration === 0) return
   timer = delay(close, props.duration!)
 }
+
 function clearTimer() {
   clearTimeout(timer)
 }
@@ -54,7 +55,6 @@ function close() {
 watch(visible ,(val)=>{
   // 使退出动画更加流畅
   if(!val) boxHeight.value = -props.offset
-
 })
 
 useEventListener(document, 'keydown',(e:Event)=>{
@@ -76,19 +76,19 @@ defineExpose<MessageComInstance>({
 
 <template>
   <Transition :name="transitionName" @after-leave="!visible && onDestroy()" @enter="boxHeight = messageRef!.getBoundingClientRect().height">
-    <div class="er-message" ref="messageRef" :class="{
-      [`er-message--${type}`]: type,
+    <div class="n-message" ref="messageRef" :class="{
+      [`n-message--${type}`]: type,
       'is-close': showClose,
       'text-center': center
     }" v-show="visible" role="alert" @mouseenter="clearTimer" @mouseleave="startTimer" :style="customStyle">
-      <er-icon class="er-message__icon" :icon="iconName" />
-      <div class="er-message__content">
+      <n-icon class="n-message__icon" :icon="iconName" />
+      <div class="n-message__content">
         <slot>
           <renderVNode v-if="message" :vNode="message" />
         </slot>
       </div>
-      <div class="er-message__close" v-if="showClose">
-        <er-icon icon="xmark" @click.stop="close" />
+      <div class="n-message__close" v-if="showClose">
+        <n-icon icon="xmark" @click.stop="close" />
       </div>
     </div>
   </Transition>

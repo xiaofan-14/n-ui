@@ -1,7 +1,7 @@
 import type { App, Plugin } from 'vue'
 import { each } from 'lodash-es'
-import { provideGlobalConfig } from '@learn-ui-to-me/components'
-import type { configProviderProps } from '@learn-ui-to-me/components'
+import { provideGlobalConfig } from '@n-ui/components'
+import type { configProviderProps } from '@n-ui/components'
 
 export function setupInstall(components: Plugin[]) {
   function installer(app: App, opts?: configProviderProps) {

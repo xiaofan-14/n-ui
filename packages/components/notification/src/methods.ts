@@ -1,5 +1,5 @@
 import { shallowReactive, isVNode, render, h } from 'vue'
-import { useId, useZIndex } from '@learn-ui-to-me/hooks'
+import { useId, useZIndex } from '@n-ui/hooks'
 import { findIndex, get, isString, each, set } from 'lodash-es'
 import { notificationTypes, notificationPosition } from './notification'
 import NotificationConstructor from '../src/notification.vue'

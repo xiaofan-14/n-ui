@@ -1,8 +1,8 @@
 import {describe, it, expect, vi} from "vitest"
 import type {alertType} from "../src/alert"
 import {mount} from "@vue/test-utils"
-import {ErAlert as Alert} from "../index"
-import {ErIcon as Icon} from '../../icon'
+import {NAlert as Alert} from "../index"
+import {NIcon as Icon} from '../../icon'
 
 describe("Alert.vue", () => {
   const title = "Test Alert";
@@ -16,7 +16,7 @@ describe("Alert.vue", () => {
         default: desc,
       },
       global: {
-        stubs: ["ErIcon"],
+        stubs: ["NIcon"],
       },
     });
     expect(wrapper.text()).toContain(title);
@@ -54,7 +54,7 @@ describe("Alert.vue", () => {
         default: desc,
       },
       global: {
-        stubs: ["ErIcon"],
+        stubs: ["NIcon"],
       },
     });
 
@@ -77,7 +77,7 @@ describe("Alert.vue", () => {
         default: desc,
       },
       global: {
-        stubs: ["ErIcon"],
+        stubs: ["NIcon"],
       },
     });
     wrapper.findComponent(Icon).trigger("click");
@@ -108,7 +108,7 @@ describe("Alert.vue", () => {
       },
     });
     //class
-    const rootNode = wrapper.find(".er-alert");
+    const rootNode = wrapper.find(".n-alert");
     expect(rootNode.classes()).toContain("text-center");
   });
 
@@ -116,7 +116,7 @@ describe("Alert.vue", () => {
     const wrapper = mount(Alert, {
       props: {closable: false},
     });
-    expect(wrapper.find(".er-alert__close").exists()).toBe(false);
+    expect(wrapper.find(".n-alert__close").exists()).toBe(false);
   });
 
   it("should toggle visibility when open and close methods are called", async () => {
@@ -124,9 +124,9 @@ describe("Alert.vue", () => {
       props: {title, closable: false},
     });
     await wrapper.vm.close();
-    expect(wrapper.find(".er-alert").attributes().style).toBe("display: none;");
+    expect(wrapper.find(".n-alert").attributes().style).toBe("display: none;");
     await wrapper.vm.open();
-    expect(wrapper.find(".er-alert").attributes().style).toBe("");
+    expect(wrapper.find(".n-alert").attributes().style).toBe("");
   });
 });
 

@@ -1,7 +1,7 @@
 import { describe, it, test, expect, vi, beforeEach } from "vitest";
-import { withInstall } from "@learn-ui-to-me/utils";
+import { withInstall } from "@n-ui/utils";
 import { mount } from "@vue/test-utils";
-import { ErDropdown, ErDropdownItem } from "../";
+import { NDropdown, NDropdownItem } from "../";
 import type { dropdownItemProps } from "../"
 
 import Dropdown from "../src/dropdown.vue";
@@ -12,20 +12,20 @@ vi.mock("@popperjs/core");
 describe("Dropdown/index.ts", () => {
   // 测试 withInstall 函数是否被正确应用
   it("should be exported with withInstall()", () => {
-    expect(ErDropdown.install).toBeDefined();
-    expect(ErDropdownItem.install).toBeDefined();
+    expect(NDropdown.install).toBeDefined();
+    expect(NDropdownItem.install).toBeDefined();
   });
 
   // 测试 Dropdown 组件是否被正确导出
   it("should be exported Dropdown component", () => {
-    expect(ErDropdown).toBe(Dropdown);
-    expect(ErDropdownItem).toBe(DropdownItem);
+    expect(NDropdown).toBe(Dropdown);
+    expect(NDropdownItem).toBe(DropdownItem);
   });
 
   // 可选：测试 withInstall 是否增强了 Tooltip 组件的功能
   test("should enhance Dropdown component", () => {
     const enhancedDropdown = withInstall(Dropdown);
-    expect(enhancedDropdown).toBe(ErDropdown);
+    expect(enhancedDropdown).toBe(NDropdown);
     // 这里可以添加更多测试，确保 withInstall 增强了组件的特定功能
   });
 
@@ -59,7 +59,7 @@ describe("Dropdown.vue", () => {
     });
 
     expect(wrapper.text()).toContain("Default slot content");
-    expect(wrapper.find(".er-dropdown").exists()).toBeTruthy();
+    expect(wrapper.find(".n-dropdown").exists()).toBeTruthy();
   });
 
   it("should emit command event when item is clicked", async () => {
@@ -85,7 +85,7 @@ describe("Dropdown.vue", () => {
     triggerArea.trigger("click");
     await vi.runAllTimers();
 
-    expect(wrapper.find(".er-dropdown__menu").exists()).toBeTruthy();
+    expect(wrapper.find(".n-dropdown__menu").exists()).toBeTruthy();
     await wrapper.findAll("li").at(0)?.trigger("click");
     expect(onCommand).toBeCalledTimes(0); // disabled
 
@@ -117,7 +117,7 @@ describe("Dropdown.vue", () => {
     triggerArea.trigger("click");
     await vi.runAllTimers();
 
-    expect(wrapper.find(".er-dropdown__menu").exists()).toBeFalsy();
+    expect(wrapper.find(".n-dropdown__menu").exists()).toBeFalsy();
     expect(onClick).toBeCalled();
   });
 });

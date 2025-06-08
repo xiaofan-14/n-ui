@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {
   useFocusController
-} from '@learn-ui-to-me/hooks'
+} from '@n-ui/hooks'
 import {
   ref,
   computed,
@@ -10,7 +10,7 @@ import {
   shallowRef,
   nextTick
 } from 'vue'
-import { ErIcon } from '../../icon'
+import { NIcon } from '../../icon'
 import { each, noop } from 'lodash-es'
 import {
   useFormItem,
@@ -24,7 +24,7 @@ import type {
 } from './input'
 
 defineOptions({
-  name: 'ErInput',
+  name: 'NInput',
   inheritAttrs: false
 })
 
@@ -115,9 +115,9 @@ defineExpose<InputInstance>({
 </script>
 
 <template>
-  <div class="er-input" :class="{
-    [`er-input--${type}`]: type,
-    [`er-input--${size}`]: size,
+  <div class="n-input" :class="{
+    [`n-input--${type}`]: type,
+    [`n-input--${size}`]: size,
     'is-disabled': isDisabled,
     'is-prepend': $slots.prepend,
     'is-append': $slots.append,
@@ -126,36 +126,36 @@ defineExpose<InputInstance>({
     'is-focus': isFocused,
   }">
     <template v-if="type === 'textarea'">
-      <textarea class="er-textarea__wrapper" ref="textareaRef" :id="inputId" :disabled="isDisabled" :readonly="readonly"
+      <textarea class="n-textarea__wrapper" ref="textareaRef" :id="inputId" :disabled="isDisabled" :readonly="readonly"
         :autocomplete="autocomplete" :placeholder="placeholder" :autofocus="autofocus" :form="form" v-model="innerValue"
         v-bind="attrs" @input="handleInput" @change="handleChange" @focus="handleFocus" @blur="handleBlur">
       </textarea>
     </template>
     <template v-else>
-      <div v-if="$slots.prepend" class="er-input__prepend">
+      <div v-if="$slots.prepend" class="n-input__prepend">
         <slot name="prepend"></slot>
       </div>
-      <div class="er-input__wrapper" ref="wrapperRef">
-        <span v-if="$slots.prefix" class="er-input__prefix">
+      <div class="n-input__wrapper" ref="wrapperRef">
+        <span v-if="$slots.prefix" class="n-input__prefix">
           <slot name="prefix"></slot>
         </span>
 
-        <input class="er-input__inner" ref="inputRef" :id="inputId" :type="showPassword ? (pwdVisible ? 'text' : 'password') : type"
+        <input class="n-input__inner" ref="inputRef" :id="inputId" :type="showPassword ? (pwdVisible ? 'text' : 'password') : type"
           :disabled="isDisabled" :readonly="readonly" :autocomplete="autocomplete" :placeholder="placeholder"
           :autofocus="autofocus" :form="form" v-model="innerValue" v-bind="attrs" @input="handleInput"
           @change="handleChange" @focus="handleFocus" @blur="handleBlur" />
 
-        <span v-if="$slots.suffix || showClear || showPwsArea" class="er-input__suffix">
+        <span v-if="$slots.suffix || showClear || showPwsArea" class="n-input__suffix">
           <slot name="suffix"></slot>
-          <er-icon icon="xmark" v-if="showClear" class="er-input__clear" @click="clear" @mousedown.prevent="noop" />
-          <er-icon icon="eye" v-if="showPwsArea && pwdVisible" class="er-input__password" @click="togglePwdVisible"
+          <n-icon icon="xmark" v-if="showClear" class="n-input__clear" @click="clear" @mousedown.prevent="noop" />
+          <n-icon icon="eye" v-if="showPwsArea && pwdVisible" class="n-input__password" @click="togglePwdVisible"
             @mousedown.prevent="noop" />
-          <er-icon icon="eye-slash" v-if="showPwsArea && !pwdVisible" class="er-input__password"
+          <n-icon icon="eye-slash" v-if="showPwsArea && !pwdVisible" class="n-input__password"
             @click="togglePwdVisible" @mousedown.prevent="noop" />
         </span>
       </div>
 
-      <div v-if="$slots.append" class="er-input__append">
+      <div v-if="$slots.append" class="n-input__append">
         <slot name="append"></slot>
       </div>
     </template>

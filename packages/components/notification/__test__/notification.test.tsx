@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { notification, closeAll } from "../src/methods";
-import { rAF } from "@learn-ui-to-me/utils";
+import { rAF } from "@n-ui/utils";
 
 function getTopValue(element: Element) {
   const styles = window.getComputedStyle(element);
@@ -17,10 +17,10 @@ describe("createMessage", () => {
       title: "Default Title",
     });
     await rAF();
-    expect(document.querySelector(".er-notification")).toBeTruthy();
+    expect(document.querySelector(".n-notification")).toBeTruthy();
     handler.close();
     await rAF();
-    expect(document.querySelector(".er-notification")).toBeFalsy();
+    expect(document.querySelector(".n-notification")).toBeFalsy();
   });
 
   it("call notification() more times", async () => {
@@ -37,10 +37,10 @@ describe("createMessage", () => {
       title: "Default Title",
     });
     await rAF();
-    expect(document.querySelectorAll(".er-notification").length).toBe(2);
+    expect(document.querySelectorAll(".n-notification").length).toBe(2);
     closeAll();
     await rAF();
-    expect(document.querySelectorAll(".er-notification").length).toBe(0);
+    expect(document.querySelectorAll(".n-notification").length).toBe(0);
   });
 
   it("offset", async () => {
@@ -59,7 +59,7 @@ describe("createMessage", () => {
       offset: 50,
     });
     await rAF();
-    const elements = document.querySelectorAll(".er-notification");
+    const elements = document.querySelectorAll(".n-notification");
     expect(elements.length).toBe(2);
 
     expect(getTopValue(elements[0])).toBe(100);

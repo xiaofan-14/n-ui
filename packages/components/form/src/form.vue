@@ -11,7 +11,7 @@ import type {
 } from './form'
 import type { ValidateFieldsError } from "async-validator";
 
-defineOptions({ name: 'ErForm' })
+defineOptions({ name: 'NForm' })
 
 const props = withDefaults(defineProps<FormProps>(), {
   showMessage: true,
@@ -103,7 +103,7 @@ defineExpose<FormInstance>({
 </script>
 
 <template>
-  <form class="er-form">
+  <form class="n-form">
     <slot></slot>
   </form>
 </template>

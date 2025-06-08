@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
-import { ErIcon } from '../../icon'
+import { NIcon } from '../../icon'
 import { delay } from 'lodash-es'
-import { typeIconMap, addUnit, renderVNode } from '@learn-ui-to-me/utils'
-import { useOffset } from '@learn-ui-to-me/hooks'
+import { typeIconMap, addUnit, renderVNode } from '@n-ui/utils'
+import { useOffset } from '@n-ui/hooks'
 import { getLastBottomOffset } from './methods'
 import { bind } from 'lodash-es'
 import type { NotificationProps, NotificationCompInstance } from './notification'
 
 defineOptions({
-  name: 'ErNotifictaion'
+  name: 'NNotifictaion'
 })
 
 const props = withDefaults(defineProps<NotificationProps>(), {
@@ -80,26 +80,26 @@ defineExpose<NotificationCompInstance>({
 </script>
 
 <template>
-  <transition :name="`er-notification-${transitionName}`" @after-leave="!visible && onDestroy()"
+  <transition :name="`n-notification-${transitionName}`" @after-leave="!visible && onDestroy()"
     @enter="boxHeight = notifyRef!.getBoundingClientRect().height">
-    <div ref="notifyRef" class="er-notification" :class="{
-      [`er-notification--${type}`]: type,
+    <div ref="notifyRef" class="n-notification" :class="{
+      [`n-notification--${type}`]: type,
       [horizontalClass]: true,
       'show-close': showClose
     }" :style="customStyle" v-show="visible" role="alert" @click="onClick" @mouseenter="clearTimer"
       @mouseleave="startTimer">
-      <er-icon v-if="iconName" :icon="iconName" class="er-notification__icon" />
+      <n-icon v-if="iconName" :icon="iconName" class="n-notification__icon" />
 
-      <div class="er-notification__text">
-        <div class="er-notification__title">{{ title }}</div>
-        <div class="er-notification__content">
+      <div class="n-notification__text">
+        <div class="n-notification__title">{{ title }}</div>
+        <div class="n-notification__content">
           <slot>
             <renderVNode v-if="message" :vNode="message" />
           </slot>
         </div>
       </div>
-      <div class="er-notification__close" v-if="showClose">
-        <er-icon icon="xmark" @click.stop="close" />
+      <div class="n-notification__close" v-if="showClose">
+        <n-icon icon="xmark" @click.stop="close" />
       </div>
     </div>
   </transition>

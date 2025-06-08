@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { rAF } from '@learn-ui-to-me/utils'
+import { rAF } from '@n-ui/utils'
 import { Loading } from '../src/service'
 
 describe('Loading', ()=>{
@@ -11,15 +11,15 @@ describe('Loading', ()=>{
   it('should render mask', async ()=>{
     Loading()
     await rAF()
-    expect(document.querySelector('.er-loading__mask')).toBeTruthy()
+    expect(document.querySelector('.n-loading__mask')).toBeTruthy()
   })
 
   it('should close loading and remove it from DOM', async ()=>{
     const instance  = Loading()
     await rAF()
-    expect(document.querySelector('.er-loading')).toBeTruthy()
+    expect(document.querySelector('.n-loading')).toBeTruthy()
     instance.close()
     await rAF()
-    expect(document.querySelector('.er-loading')).toBeFalsy()
+    expect(document.querySelector('.n-loading')).toBeFalsy()
   })
 })

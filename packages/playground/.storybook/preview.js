@@ -1,4 +1,4 @@
-import 'learn-ui-to-me/dist/esm/theme/index.css'
+import 'n-ui/dist/esm/theme/index.css'
 
 /** @type { import('@storybook/vue3').Preview } */
 const preview = {

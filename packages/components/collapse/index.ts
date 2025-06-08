@@ -1,9 +1,9 @@
 import collapse from './src/collapse.vue'
 import collapseItem from './src/colllapse-item.vue'
-import { withInstall } from '@learn-ui-to-me/utils'
+import { withInstall } from '@n-ui/utils'
 
 
-export const ErCollapse = withInstall(collapse)
-export const ErCollapseItem = withInstall(collapseItem)
+export const NCollapse = withInstall(collapse)
+export const NCollapseItem = withInstall(collapseItem)
 
 export * from './src/collapse'

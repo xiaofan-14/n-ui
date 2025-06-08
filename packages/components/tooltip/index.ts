@@ -1,6 +1,6 @@
 import Tooltip from "./src/tooltip.vue"
-import { withInstall } from "@learn-ui-to-me/utils"
+import { withInstall } from "@n-ui/utils"
 
-export const ErTooltip = withInstall(Tooltip)
+export const NTooltip = withInstall(Tooltip)
 
 export * from './src/tooltip'

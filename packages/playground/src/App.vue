@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {reactive, ref} from "vue";
-import {ErMessage, type FormInstance} from "learn-ui-to-me";
+import {ErMessage, type FormInstance} from "n-ui";
 
 const formRef = ref<FormInstance>();
 const form = reactive({

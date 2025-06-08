@@ -2,8 +2,8 @@ import { vLoading } from './src/dirdctive'
 import { Loading } from './src/service'
 import type { App } from 'vue'
 
-export const ErLoading = {
-  name: 'ErLoading',
+export const NLoading = {
+  name: 'NLoading',
   install(app: App){
     app.directive('loading', vLoading)
     app.config.globalProperties.$loading = Loading
@@ -12,12 +12,12 @@ export const ErLoading = {
   service: Loading
 }
 
-export default ErLoading
+export default NLoading
 
 export {
   vLoading,
-  vLoading as ErLoadingDirective,
-  Loading as ErLoadingService
+  vLoading as NLoadingDirective,
+  Loading as NLoadingService
 }
 
 export * from './src/loading'

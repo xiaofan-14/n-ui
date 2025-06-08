@@ -1,9 +1,9 @@
 import type { StoryObj, Meta, ArgTypes } from "@storybook/vue3";
 import { ref, watch } from "vue";
 import { fn } from "@storybook/test";
-import type { alertInstance } from "learn-ui-to-me";
-import { ErAlert } from "learn-ui-to-me";
-import "learn-ui-to-me/dist/esm/theme/alert.css";
+import type { alertInstance } from "n-ui";
+import { ErAlert } from "n-ui";
+import "n-ui/dist/esm/theme/alert.css";
 
 type Story = StoryObj<typeof ErAlert> & { argTypes?: ArgTypes };
 

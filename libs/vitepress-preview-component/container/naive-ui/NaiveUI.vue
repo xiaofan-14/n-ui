@@ -53,7 +53,7 @@ watch(isCodeFold, () => {
 </script>
 
 <template>
-  <div :class="[ns.e('naive-ui__container')]">
+  <div :class="[ns.e('naivn-ui__container')]">
     <section :class="[ns.bem('name_handle')]">
       <div v-if="props.title" :class="[ns.bem('component', 'name')]">
         {{ title }}
@@ -83,4 +83,4 @@ watch(isCodeFold, () => {
   </div>
 </template>
 
-<style src="./naive-ui.scss"></style>
+<style src="./naivn-ui.scss"></style>

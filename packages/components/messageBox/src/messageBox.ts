@@ -69,7 +69,7 @@ export type MessageBoxShortcutMethod = ((
     options?: MessageBoxOptions
   ) => Promise<MessageBoxData>);
 
-export interface IErMessageBox {
+export interface NMessageBox {
   (options: MessageBoxOptions | string | VNode): Promise<any>;
 
   alert: MessageBoxShortcutMethod;

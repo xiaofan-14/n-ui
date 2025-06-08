@@ -1,4 +1,4 @@
-import type { Language, TranslatePair  } from '@learn-ui-to-me/locale'
+import type { Language, TranslatePair  } from '@n-ui/locale'
 
 export interface configProviderProps {
   locale?: Language

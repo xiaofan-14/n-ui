@@ -5,7 +5,7 @@ import Switch from "../src/switch.vue";
 describe("Switch.vue", () => {
   it("should render correctly", () => {
     const wrapper = mount(Switch);
-    expect(wrapper.find(".er-switch")).toBeTruthy;
+    expect(wrapper.find(".n-switch")).toBeTruthy;
   });
 
   it("should handle click event and toggle the checked state", async () => {

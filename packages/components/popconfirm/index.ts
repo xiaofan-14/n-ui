@@ -1,6 +1,6 @@
 import Popconfirm from './src/popconfirm.vue'
-import { withInstall } from '@learn-ui-to-me/utils'
+import { withInstall } from '@n-ui/utils'
 
-export const ErPopconfirm = withInstall(Popconfirm)
+export const NPopconfirm = withInstall(Popconfirm)
 
 export * from './src/popconfirm'

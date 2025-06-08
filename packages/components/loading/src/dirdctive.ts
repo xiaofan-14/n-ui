@@ -22,7 +22,7 @@ function createInstance(
   binding: DirectiveBinding<boolean>
 ){
   function getProps<K extends keyof LoadingOptions>(name: K){
-    return el.getAttribute(`er-loading-${name}`) as MaybeRef<string>
+    return el.getAttribute(`n-loading-${name}`) as MaybeRef<string>
   }
 
   function getModifier<K extends keyof LoadingOptions>(name: K){

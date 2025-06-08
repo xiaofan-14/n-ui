@@ -2,14 +2,14 @@
 import type { tooltipInstance } from '../../tooltip'
 import type { popconfirmProps, popconfirmEmits } from './popconfirm'
 import { ref, computed } from 'vue'
-import { ErTooltip } from '../../tooltip'
-import { ErButton } from '../../button'
-import { ErIcon } from '../../icon'
-import { addUnit } from '@learn-ui-to-me/utils'
-import { useLocale } from '@learn-ui-to-me/hooks'
+import { NTooltip } from '../../tooltip'
+import { NButton } from '../../button'
+import { NIcon } from '../../icon'
+import { addUnit } from '@n-ui/utils'
+import { useLocale } from '@n-ui/hooks'
 
 defineOptions({
-  name: 'ErPopconfirm'
+  name: 'NPopconfirm'
 })
 
 const props = withDefaults(defineProps<popconfirmProps>(), {
@@ -48,20 +48,20 @@ defineExpose({
 </script>
 
 <template>
-  <er-tooltip ref="tooltipRef" trigger="click" :hide-timeout="hideAfter">
+  <n-tooltip ref="tooltipRef" trigger="click" :hide-timeout="hideAfter">
     <template #content>
-      <div class="er-popconfirm" :style="style">
-        <div class="er-popconfirm__main">
-          <er-icon v-if="!hideIcon && icon" :icon="icon" :color="iconColor" />
+      <div class="n-popconfirm" :style="style">
+        <div class="n-popconfirm__main">
+          <n-icon v-if="!hideIcon && icon" :icon="icon" :color="iconColor" />
           {{ title }}
         </div>
-        <div class="er-popconfirm__action">
-          <er-button class="er-popconfirm__cancel" size="small" :type="cancelButtonType" @click="cancel">
+        <div class="n-popconfirm__action">
+          <n-button class="n-popconfirm__cancel" size="small" :type="cancelButtonType" @click="cancel">
             {{ cancelButtonText || locale.t('popconfirm.cancelButtonText') }}
-          </er-button>
-          <er-button class="er-popconfirm__confirm" size="small" :type="confirmButtonType" @click="confirm">
+          </n-button>
+          <n-button class="n-popconfirm__confirm" size="small" :type="confirmButtonType" @click="confirm">
             {{ confirmButtonText || locale.t('popconfirm.confirmButtonText') }}
-          </er-button>
+          </n-button>
         </div>
       </div>
     </template>
@@ -72,7 +72,7 @@ defineExpose({
     <template v-if="$slots.reference" #default>
       <slot name="reference"></slot>
     </template>
-  </er-tooltip>
+  </n-tooltip>
 </template>
 
 <style scoped>

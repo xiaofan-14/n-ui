@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
-import { useId } from '@learn-ui-to-me/hooks'
+import { useId } from '@n-ui/hooks'
 import type {
   SwitchProps,
   SwitchEmits,
@@ -8,7 +8,7 @@ import type {
 } from './switch'
 
 defineOptions({
-  name: 'ErSwitch',
+  name: 'NSwitch',
   inheritAttrs: false
 })
 
@@ -55,16 +55,16 @@ defineExpose<SwitchInstance>({
 
 <template>
   <div
-    class="er-switch"
+    class="n-switch"
     :class="{
-      [`er-switch--${size}`]: size,
+      [`n-switch--${size}`]: size,
       'is-disabled': isDisabled,
       'is-checked': checked,
     }"
     @click="handleChange"
   >
     <input
-      class="er-switch__input"
+      class="n-switch__input"
       type="checkbox"
       role="switch"
       ref="inputRef"
@@ -74,16 +74,16 @@ defineExpose<SwitchInstance>({
       :checked="checked"
       @keydown.enter="handleChange"
     />
-    <div class="er-switch__core">
-      <div class="er-switch__core-inner">
+    <div class="n-switch__core">
+      <div class="n-switch__core-inner">
         <span
           v-if="activeText || inactiveText"
-          class="er-switch__core-inner-text"
+          class="n-switch__core-inner-text"
         >
           {{ checked ? activeText : inactiveText }}
         </span>
       </div>
-      <div class="er-switch__core-action"></div>
+      <div class="n-switch__core-action"></div>
     </div>
   </div>
 </template>

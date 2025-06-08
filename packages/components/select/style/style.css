@@ -1,67 +1,67 @@
-.er-select {
-  --er-select-item-hover-bg-color: var(--er-fill-color-light);
-  --er-select-item-font-size: var(--er-font-size-base);
-  --er-select-item-font-color: var(--er-text-color-regular);
-  --er-select-item-selected-font-color: var(--er-color-primary);
-  --er-select-item-disabled-font-color: var(--er-text-color-placeholder);
-  --er-select-input-focus-border-color: var(--er-color-primary);
+.n-select {
+  --n-select-item-hover-bg-color: var(--n-fill-color-light);
+  --n-select-item-font-size: var(--n-font-size-base);
+  --n-select-item-font-color: var(--n-text-color-regular);
+  --n-select-item-selected-font-color: var(--n-color-primary);
+  --n-select-item-disabled-font-color: var(--n-text-color-placeholder);
+  --n-select-input-focus-border-color: var(--n-color-primary);
 }
 
-.er-select{
+.n-select{
   display: inline-block;
   vertical-align: middle;
   line-height: 32px;
-  :deep(.er-tooltip__popper) {
+  :deep(.n-tooltip__popper) {
     padding: 0;
   }
 
-  :deep(.er-input){
+  :deep(.n-input){
     .header-angle {
-      transition: transform var(--er-transition-duration);
+      transition: transform var(--n-transition-duration);
       &.is-active {
         transform: rotate(180deg);
       }
     }
   }
 
-  .er-select__nodata, .er-select__loading {
+  .n-select__nodata, .n-select__loading {
     padding: 10px 0;
     margin: 0;
     text-align: center;
-    color: var(--er-text-color-secondary);
-    font-size: var(--er-select-font-size);
+    color: var(--n-text-color-secondary);
+    font-size: var(--n-select-font-size);
   }
-  .er-select__menu {
+  .n-select__menu {
     list-style: none;
     margin: 6px 0;
     padding: 0;
     box-sizing: border-box;
   }
-  .er-select__menu-item {
+  .n-select__menu-item {
     margin: 0;
-    font-size: var(--er-select-item-font-size);
+    font-size: var(--n-select-item-font-size);
     padding: 0 32px 0 20px;
     position: relative;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--er-select-item-font-color);
+    color: var(--n-select-item-font-color);
     height: 34px;
     line-height: 34px;
     box-sizing: border-box;
     cursor: pointer;
     &:hover {
-      background-color: var(--er-select-item-hover-bg-color);
+      background-color: var(--n-select-item-hover-bg-color);
     }
     &.is-selected {
-      color: var(--er-select-item-selected-font-color);
+      color: var(--n-select-item-selected-font-color);
       font-weight: 700;
     }
     &.is-highlighted {
-      background-color: var(--er-select-item-hover-bg-color);
+      background-color: var(--n-select-item-hover-bg-color);
     }
     &.is-disabled {
-      color: var(--er-select-item-disabled-font-color);
+      color: var(--n-select-item-disabled-font-color);
       cursor: not-allowed;
       &:hover {
         background-color: transparent;
@@ -70,7 +70,7 @@
 
   }
 
-  :deep(.er-input__inner) {
+  :deep(.n-input__inner) {
     cursor: pointer;
   }
 }

@@ -329,7 +329,7 @@ const _e = /* @__PURE__ */ T(ae, [["render", ve]]), me = /* @__PURE__ */ Z({
     }), (s, r) => {
       const g = S("ClientOnly");
       return d(), p("div", {
-        class: a([n(e).e("naive-ui__container")])
+        class: a([n(e).e("naivn-ui__container")])
       }, [
         i("section", {
           class: a([n(e).bem("name_handle")])

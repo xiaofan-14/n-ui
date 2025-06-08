@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { renderVNode } from '@learn-ui-to-me/utils'
+import { renderVNode } from '@n-ui/utils'
 import { computed, inject } from 'vue'
 import { eq, every,get } from 'lodash-es'
 import { SELECT_CTX_KEY } from './constants'
 import type { SelectOptionProps } from './select'
 
 defineOptions({
-  name: 'ErOption'
+  name: 'NOption'
 })
 
 const props = withDefaults(defineProps<SelectOptionProps>(), {
@@ -33,7 +33,7 @@ function handleClick(){
 
 <template>
   <li
-  class="er-select__menu-item"
+  class="n-select__menu-item"
   :class="{
     'is-disabled': disabled,
     'is-selected': selected,

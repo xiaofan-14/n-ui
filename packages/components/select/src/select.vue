@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {computed, ref, reactive, provide, watch, nextTick, h, onMounted} from 'vue'
-import {useId, useFocusController, useClickOutSide} from '@learn-ui-to-me/hooks'
+import {useId, useFocusController, useClickOutSide} from '@n-ui/hooks'
 import {
   each,
   eq,
@@ -29,16 +29,16 @@ import type {
 import type {tooltipInstance} from '../../tooltip'
 import type {InputInstance} from '../../input'
 
-import ErOption from './option.vue'
-import {ErTooltip} from '../../tooltip'
-import {ErInput} from '../../input'
-import {ErIcon} from '../../icon'
+import NOption from './option.vue'
+import {NTooltip} from '../../tooltip'
+import {NInput} from '../../input'
+import {NIcon} from '../../icon'
 
 import {POPPER_OPTIONS, SELECT_CTX_KEY} from './constants.ts'
-import {debugWarn, renderVNode} from "@learn-ui-to-me/utils";
+import {debugWarn, renderVNode} from "@n-ui/utils";
 import {useKeyMap} from "./useKeyMap.ts";
 
-const COMPONENT_NAME = 'ErSelect'
+const COMPONENT_NAME = 'NSelect'
 defineOptions({name: COMPONENT_NAME})
 
 const props = withDefaults(defineProps<SelectProps>(), {
@@ -323,15 +323,15 @@ defineExpose<SelectInstance>({
 </script>
 
 <template>
-  <div ref="selectRef" class="er-select" :class="{
+  <div ref="selectRef" class="n-select" :class="{
     'is-disabled': isDisabled,
   }" @click.stop="toggleVisible" @mouseenter="selectStates.mouseHover = true"
        @mouseleave="selectStates.mouseHover = false">
-    <er-tooltip ref="tooltipRef" placement="bottom-start" :popper-options="POPPER_OPTIONS"
+    <n-tooltip ref="tooltipRef" placement="bottom-start" :popper-options="POPPER_OPTIONS"
                 @click-outside="controlVisible(false)" manual>
       <template #default>
         <div ref="inputWrapperRef">
-          <er-input
+          <n-input
             ref="inputRef"
             v-model="selectStates.inputValue"
             :id="inputId"
@@ -343,23 +343,23 @@ defineExpose<SelectInstance>({
             @keydown="handleKeyDown"
           >
             <template #suffix>
-              <er-icon v-if="showClear" icon="circle-xmark" class="er-input__clear" @click.stop="handleClear"
+              <n-icon v-if="showClear" icon="circle-xmark" class="n-input__clear" @click.stop="handleClear"
                        @mousedown.prevent="noop"/>
-              <er-icon v-else class="header-angle" icon="angle-down" :class="{ 'is-active': isDropdownVisible }"/>
+              <n-icon v-else class="header-angle" icon="angle-down" :class="{ 'is-active': isDropdownVisible }"/>
             </template>
-          </er-input>
+          </n-input>
         </div>
       </template>
       <template #content>
-        <div class="er-select__loading" v-if="selectStates.loading">
-          <er-icon icon="spinner" spin/>
+        <div class="n-select__loading" v-if="selectStates.loading">
+          <n-icon icon="spinner" spin/>
         </div>
-        <div class="er-select__nodata" v-else-if="filterable && isNoData">
+        <div class="n-select__nodata" v-else-if="filterable && isNoData">
           No data
         </div>
-        <ul class="er-select__menu">
+        <ul class="n-select__menu">
           <template v-if="!hasChildren">
-            <er-option v-for="item in filteredOptions" :key="item.value" v-bind="item"/>
+            <n-option v-for="item in filteredOptions" :key="item.value" v-bind="item"/>
           </template>
           <template v-else>
             <template v-for="[vNode, _props] in filteredChild" :key="_props.value">
@@ -368,7 +368,7 @@ defineExpose<SelectInstance>({
           </template>
         </ul>
       </template>
-    </er-tooltip>
+    </n-tooltip>
   </div>
 </template>
 

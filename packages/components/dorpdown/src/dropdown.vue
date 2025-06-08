@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, ref, provide } from 'vue'
 import { omit, isNil } from 'lodash-es'
-import { ErTooltip } from '../../tooltip'
-import { ErButtonGroup, ErButton } from '../../button'
+import { NTooltip } from '../../tooltip'
+import { NButtonGroup, NButton } from '../../button'
 import { DROPDOWN_CTX_KEY } from './constants'
-import { useDisabledStyle } from '@learn-ui-to-me/hooks'
-import ErDropdownItem from './dropdownItem.vue'
+import { useDisabledStyle } from '@n-ui/hooks'
+import NDropdownItem from './dropdownItem.vue'
 import type {
   dropdownProps,
   dropdownEmits,
@@ -18,7 +18,7 @@ import type { buttonInstance } from '../../button'
 
 
 defineOptions({
-  name: 'ErDropdown',
+  name: 'NDropdown',
   inheritAttrs: false
 })
 
@@ -57,41 +57,41 @@ defineExpose<dropdownInstance>({
 </script>
 
 <template>
-  <div class="er-dropdown" :class="{
+  <div class="n-dropdown" :class="{
     'is-disabled': props.disabled
   }">
-    <ErTooltip ref="tooltipRef" v-bind="tooltipProps" :virtual-triggering="splitButton" :virtual-ref="virtualRef"
+    <n-tooltip ref="tooltipRef" v-bind="tooltipProps" :virtual-triggering="splitButton" :virtual-ref="virtualRef"
       @:visible-change="$emit('visible-change', $event)">
 
-      <ErButtonGroup v-if="splitButton" :type="type" :size="size" :disabled="disabled">
-        <ErButton @click="$emit('click', $event)">
+      <n-button-group v-if="splitButton" :type="type" :size="size" :disabled="disabled">
+        <n-button @click="$emit('click', $event)">
           <slot name="default"></slot>
-        </ErButton>
-        <ErButton ref="triggerRef" icon="angle-down" />
-      </ErButtonGroup>
+        </n-Button>
+        <n-button ref="triggerRef" icon="angle-down" />
+      </n-button-group>
 
       <!-- <template v-else> -->
         <slot e-else name="default"></slot>
       <!-- </template> -->
 
       <template #content>
-        <div class="er-dropdown__menu">
+        <div class="n-dropdown__menu">
           <slot name="dropdown">
             <template v-for="item in items" :key="item.command">
-              <ErDropdownItem v-bind="item" />
+              <n-dropdown-item v-bind="item" />
             </template>
           </slot>
         </div>
       </template>
 
-    </ErTooltip>
+    </n-tooltip>
   </div>
 </template>
 
 <style scoped>
 @import '../style/style.css';
 
-:deep(.er-button-group) {
+:deep(.n-button-group) {
   &> :last-child {
     padding: 5px 7px;
   }

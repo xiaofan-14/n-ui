@@ -2,11 +2,11 @@
 import type {buttonProps, buttonInstance} from './button.ts'
 import {ref, computed, inject} from "vue"
 import {throttle} from 'lodash-es'
-import {ErIcon} from '../../icon'
+import {NIcon} from '../../icon'
 import {BUTTON_GROUP_CTX} from "./contants.ts"
 
 defineOptions({
-  name: 'ErButton'
+  name: 'NButton'
 })
 
 const emits = defineEmits<{
@@ -57,14 +57,14 @@ defineExpose<buttonInstance>({
   <component
     :id="props.id"
     ref="_ref"
-    class="er-button"
+    class="n-button"
     :is="tag"
     :autofocus="autofocus"
     :type="tag === 'button' ? nativeType : void 0"
     :disabled="disabled || loading ? true : void 0"
     :class="{
-      [`er-button--${type}`]: type,
-      [`er-button--${size}`]: size,
+      [`n-button--${type}`]: type,
+      [`n-button--${size}`]: size,
       'is-loading': loading,
       'is-disabled': disabled,
       'is-plain': plain,
@@ -75,13 +75,13 @@ defineExpose<buttonInstance>({
   >
     <template v-if="loading">
       <slot name="loading">
-        <ErIcon class="loading-icon" :icon="loadingIcon ?? 'spinner'" spin :style="iconStyle" size="1x"/>
+        <n-icon class="loading-icon" :icon="loadingIcon ?? 'spinner'" spin :style="iconStyle" size="1x"/>
       </slot>
     </template>
 
-    <er-icon v-if="icon && !loading" :icon="icon" size="1x" :style="iconStyle"/>
+    <n-icon v-if="icon && !loading" :icon="icon" size="1x" :style="iconStyle"/>
     <slot></slot>
-    <er-icon v-if="suffixIcon && !loading" :icon="suffixIcon" size="1x" :style="iconStyle"/>
+    <n-icon v-if="suffixIcon && !loading" :icon="suffixIcon" size="1x" :style="iconStyle"/>
   </component>
 </template>
 <style>

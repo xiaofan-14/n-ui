@@ -1,6 +1,6 @@
 import LoadingComp from './loading.vue'
 import { createApp, nextTick, reactive, ref } from 'vue'
-import { useZIndex } from '@learn-ui-to-me/hooks'
+import { useZIndex } from '@n-ui/hooks'
 import type {
   LoadingOptions,
   LoadingOptionsResolved
@@ -12,9 +12,9 @@ import {
 } from "lodash-es"
 
 
-const RELATIVE_CLASS = `er-loading-parent--relative` as const
-const HIDE_CLASS = `er-loading-parent--hide` as const
-const LOADING_NUMBER_KEY = `er-loading-number` as const
+const RELATIVE_CLASS = `n-loading-parent--relative` as const
+const HIDE_CLASS = `n-loading-parent--hide` as const
+const LOADING_NUMBER_KEY = `n-loading-number` as const
 
 const { nextZIndex } = useZIndex(3000)
 

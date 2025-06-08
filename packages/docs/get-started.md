@@ -10,7 +10,7 @@ next:
 
 
 ```bash
-npm i learn-ui-to-me --save
+npm i n-ui --save
 ```
 
 ## 开始使用
@@ -20,9 +20,9 @@ npm i learn-ui-to-me --save
 
 ```js
 // 引入所有组件
-import LearnUI from 'learn-ui-to-me'
+import LearnUI from 'n-ui'
 // 引入样式
-import 'learn-ui-to-me/dist/index.css'
+import 'n-ui/dist/index.css'
 
 import App from './App.vue'
 // 全局使用

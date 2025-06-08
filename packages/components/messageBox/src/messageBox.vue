@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import {reactive, computed, ref, nextTick, watch} from 'vue'
-import {useZIndex, useId} from '@learn-ui-to-me/hooks'
+import {useZIndex, useId} from '@n-ui/hooks'
 import {isNil, isFunction} from 'lodash-es'
-import {typeIconMap} from '@learn-ui-to-me/utils'
-import {ErOverlay} from "../../overlay"
-import {ErButton} from '../../button'
-import {ErInput} from '../../input'
-import {ErIcon} from '../../icon'
+import {typeIconMap} from '@n-ui/utils'
+import {NOverlay} from "../../overlay"
+import {NButton} from '../../button'
+import {NInput} from '../../input'
+import {NIcon} from '../../icon'
 
 import type {Ref} from 'vue'
 import type {InputInstance} from '../../input'
@@ -14,7 +14,7 @@ import type {MessageBoxProps, MessageBoxAction} from './messageBox'
 
 
 defineOptions({
-  name: "ErMessageBox"
+  name: "NMessageBox"
 })
 
 const props = withDefaults(defineProps<MessageBoxProps>(), {
@@ -82,16 +82,16 @@ function handleClose() {
 
 <template>
   <transition name="fade-in-linear" @after-leave="destroy">
-    <er-overlay v-show="(visible as Ref).value" :z-index="state.zIndex" mask>
+    <n-overlay v-show="(visible as Ref).value" :z-index="state.zIndex" mask>
       <div
         role="dialog"
-        class="er-overlay-message-box"
+        class="n-overlay-message-box"
         @click="handleWrapperClick"
       >
         <div
           ref="rootRef"
           :class="[
-            'er-message-box',
+            'n-message-box',
             {
               'is-center': state.center,
             },
@@ -101,14 +101,14 @@ function handleClose() {
           <div
             v-if="!isNil(state.title)"
             ref="headerRef"
-            class="er-message-box__header"
+            class="n-message-box__header"
             :class="{ 'show-close': state.showClose }"
           >
-            <div class="er-message-box__title">
-              <er-icon
+            <div class="n-message-box__title">
+              <n-button
                 v-if="iconComponent && state.center"
                 :class="{
-                  [`er-icon-${state.type}`]: state.type,
+                  [`n-icon-${state.type}`]: state.type,
                 }"
                 :icon="iconComponent"
               />
@@ -116,21 +116,21 @@ function handleClose() {
             </div>
             <button
               v-if="showClose"
-              class="er-message-box__header-btn"
+              class="n-message-box__header-btn"
               @click.stop="handleClose"
             >
-              <er-icon icon="xmark"/>
+              <n-icon icon="xmark"/>
             </button>
           </div>
-          <div class="er-message-box__content">
-            <er-icon
+          <div class="n-message-box__content">
+            <n-icon
               v-if="iconComponent && !state.center && hasMessage"
               :class="{
-                [`er-icon-${state.type}`]: state.type,
+                [`n-icon-${state.type}`]: state.type,
               }"
               :icon="iconComponent"
             />
-            <div v-if="hasMessage" class="er-message-box__message">
+            <div v-if="hasMessage" class="n-message-box__message">
               <slot>
                 <component
                   :is="state.showInput ? 'label' : 'p'"
@@ -141,8 +141,8 @@ function handleClose() {
               </slot>
             </div>
           </div>
-          <div v-show="state.showInput" class="er-message-box__input">
-            <er-input
+          <div v-show="state.showInput" class="n-message-box__input">
+            <n-input
               v-model="state.inputValue"
               ref="inputRef"
               :placeholder="state.inputPlaceholder"
@@ -150,33 +150,32 @@ function handleClose() {
               @keyup.enter="handleInputEnter"
             />
           </div>
-          <div class="er-message-box__footer">
-            <er-button
+          <div class="n-message-box__footer">
+            <n-button
               v-if="state.showCancelButton"
-              class="er-message-box__footer-btn er-message-box__cancel-btn"
+              class="n-message-box__footer-btn n-message-box__cancel-btn"
               :type="state.cancelButtonType"
               :round="state.roundButton"
               :loading="state.cancelButtonLoading"
               @click="handleAction('cancel')"
               @keydown.prevent.enter="handleAction('cancel')"
             >{{ state.cancelButtonText }}
-            </er-button
+            </n-button
             >
-            <er-button
+            <n-button
               v-show="state.showConfirmButton"
-              class="er-message-box__footer-btn er-message-box__confirm-btn"
+              class="n-message-box__footer-btn n-message-box__confirm-btn"
               :type="state.confirmButtonType ?? 'primary'"
               :round="state.roundButton"
               :loading="state.confirmButtonLoading"
               @click="handleAction('confirm')"
               @keydown.prevent.enter="handleAction('confirm')"
             >{{ state.confirmButtonText }}
-            </er-button
-            >
+            </n-button>
           </div>
         </div>
       </div>
-    </er-overlay>
+    </n-overlay>
   </transition>
 </template>
 

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import {computed} from 'vue'
 import {isString} from "lodash-es"
-import {ErIcon} from '../../icon'
+import {NIcon} from '../../icon'
 
 import type {Ref} from 'vue'
 import type {LoadingOptions} from './loading'
 
 defineOptions({
-  name: 'ErLoading',
+  name: 'NLoading',
   inheritAttrs: false
 })
 
@@ -23,12 +23,12 @@ const iconName = computed(() => {
   <transition name="fade-in-linear" @after-leave="onAfterLeave">
     <div
       v-show="(props.visible as Ref).value"
-      class="er-loading er-loading__mask"
+      class="n-loading n-loading__mask"
       :class="{ 'is-fullscreen': fullscreen }"
     >
-      <div class="er-loading__spinner">
-        <er-icon v-if="props.spinner !== false" :icon="iconName" spin/>
-        <p v-if="text" class="er-loading-text">{{ text }}</p>
+      <div class="n-loading__spinner">
+        <n-icon v-if="props.spinner !== false" :icon="iconName" spin/>
+        <p v-if="text" class="n-loading-text">{{ text }}</p>
       </div>
     </div>
   </transition>
@@ -36,8 +36,9 @@ const iconName = computed(() => {
 
 <style scoped>
 @import '../style/style.css';
-.er-loading {
-  --er-loading-bg-color: v-bind(background) !important;
-  --er-loading-z-index: v-bind(zIndex) !important;
+
+.n-loading {
+  --n-loading-bg-color: v-bind(background) !important;
+  --n-loading-z-index: v-bind(zIndex) !important;
 }
 </style>

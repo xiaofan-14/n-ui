@@ -13,7 +13,7 @@ import {
   isUndefined,
   assign
 } from "lodash-es"
-import ErMessageBoxConstructor from './messageBox.vue'
+import NMessageBoxConstructor from './messageBox.vue'
 
 import type {
   ComponentPublicInstance,
@@ -26,7 +26,8 @@ import type {
   MessageBoxProps,
   MessageBoxOptions,
   MessageBoxCallback,
-  MessageBoxData, IErMessageBox,
+  MessageBoxData,
+  NMessageBox,
 } from './messageBox'
 
 const messageInstanceMap =
@@ -45,7 +46,7 @@ function initInstance(props: MessageBoxProps, container: HTMLElement) {
     isFunction(msg) ? msg : () => msg
 
   const vnode = createVNode(
-    ErMessageBoxConstructor, {
+    NMessageBoxConstructor, {
       ...props,
       visible,
     } as VNodeProps,
@@ -160,4 +161,4 @@ set(MessageBox, 'close', ()=>{
   messageInstanceMap.clear()
 })
 
-export default MessageBox as IErMessageBox
+export default MessageBox as NMessageBox

@@ -17,22 +17,22 @@ importers:
       '@fortawesome/vue-fontawesome':
         specifier: ^3.0.8
         version: 3.0.8(@fortawesome/fontawesome-svg-core@6.7.2)(vue@3.5.16(typescript@5.8.3))
-      '@learn-ui-to-me/components':
+      '@n-ui/components':
         specifier: workspace:*
         version: link:packages/components
-      '@learn-ui-to-me/hooks':
+      '@n-ui/hooks':
         specifier: workspace:*
         version: link:packages/hooks
-      '@learn-ui-to-me/locale':
+      '@n-ui/locale':
         specifier: workspace:*
         version: link:packages/locale
-      '@learn-ui-to-me/theme':
+      '@n-ui/theme':
         specifier: workspace:*
         version: link:packages/theme
-      '@learn-ui-to-me/utils':
+      '@n-ui/utils':
         specifier: workspace:*
         version: link:packages/utils
-      '@learn-ui-to-me/vite-plugins':
+      '@n-ui/vite-plugins':
         specifier: workspace:*
         version: link:libs/vite-plugins
       '@vitejs/plugin-vue-jsx':
@@ -41,7 +41,7 @@ importers:
       '@vitepress-preview/component':
         specifier: workspace:*
         version: link:libs/vitepress-preview-component
-      learn-ui-to-me:
+      n-ui:
         specifier: workspace:*
         version: link:packages/core
       lodash-es:
@@ -159,10 +159,10 @@ importers:
 
   packages/components:
     dependencies:
-      '@learn-ui-to-me/hooks':
+      '@n-ui/hooks':
         specifier: workspace:*
         version: link:../hooks
-      '@learn-ui-to-me/utils':
+      '@n-ui/utils':
         specifier: workspace:*
         version: link:../utils
 

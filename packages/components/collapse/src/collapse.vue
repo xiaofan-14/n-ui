@@ -2,9 +2,9 @@
 import type { collapseEmits, collapseItemName, collapseProps } from './collapse'
 import {provide, ref, watch, watchEffect} from 'vue'
 import { COLLAPSE_CTX_KEY } from './contants'
-import { debugWarn } from '@learn-ui-to-me/utils'
+import { debugWarn } from '@n-ui/utils'
 
-const COMPONENT_NAME = 'Collapse'
+const COMPONENT_NAME = 'NCollapse'
 
 defineOptions({
     name: COMPONENT_NAME,
@@ -61,7 +61,7 @@ provide(COLLAPSE_CTX_KEY, {
 </script>
 
 <template>
-    <div class="er-collapse">
+    <div class="n-collapse">
         <slot></slot>
     </div>
 </template>

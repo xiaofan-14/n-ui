@@ -1,12 +1,12 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { mount } from "@vue/test-utils";
-import { ErPopconfirm } from "../";
+import { NPopconfirm } from "../";
 import type { popconfirmProps } from "../";
 import { each, get } from "lodash-es";
-import { withInstall } from "@learn-ui-to-me/utils";
+import { withInstall } from "@n-ui/utils";
 import Popconfirm from "../src/popconfirm.vue";
 // import { nextTick } from "vue";
-// import { ErConfigProvider } from '../../configProvider'
+// import { NConfigProvider } from '../../configProvider'
 
 
 // const onConfirm = vi.fn();
@@ -31,7 +31,7 @@ describe("Popconfirm.vue", () => {
   });
 
   it("should accept all props", () => {
-    const wrapper = mount(ErPopconfirm, {
+    const wrapper = mount(NPopconfirm, {
       props,
     });
 
@@ -76,36 +76,36 @@ describe("Popconfirm.vue", () => {
 
   //   // 弹出层是否出现 er-popconfirm 在浏览器中行为是正常的
 
-  //   expect(wrapper.find(".er-popconfirm").exists()).toBeTruthy();
-  //   const confirmButton = wrapper.find(".er-popconfirm__confirm");
+  //   expect(wrapper.find(".n-popconfirm").exists()).toBeTruthy();
+  //   const confirmButton = wrapper.find(".n-popconfirm__confirm");
   //   expect(confirmButton.exists()).toBeTruthy();
 
   //   confirmButton.trigger("click");
   //   await vi.runAllTimers();
-  //   expect(wrapper.find(".er-popconfirm").exists()).toBeFalsy();
+  //   expect(wrapper.find(".n-popconfirm").exists()).toBeFalsy();
   //   expect(onConfirm).toBeCalled();
 
   //   triggerArea.trigger("click");
   //   await vi.runAllTimers();
-  //   expect(wrapper.find(".er-popconfirm").exists()).toBeTruthy();
-  //   const cancelButton = wrapper.find(".er-popconfirm__cancel");
+  //   expect(wrapper.find(".n-popconfirm").exists()).toBeTruthy();
+  //   const cancelButton = wrapper.find(".n-popconfirm__cancel");
   //   expect(cancelButton.exists()).toBeTruthy();
 
   //   await vi.runAllTimers();
   //   cancelButton.trigger("click");
   //   await vi.runAllTimers();
-  //   expect(wrapper.find(".er-popconfirm").exists()).toBeFalsy();
+  //   expect(wrapper.find(".n-popconfirm").exists()).toBeFalsy();
   //   expect(onCancel).toBeCalled();
   // });
 });
 
 describe("Popconfirm/index.ts", () => {
   it("should be exported with withInstal", () => {
-    expect(ErPopconfirm.install).toBeDefined();
+    expect(NPopconfirm.install).toBeDefined();
   });
 
   it("should be exported popconfirm component", () => {
-    expect(ErPopconfirm).toBe(Popconfirm);
+    expect(NPopconfirm).toBe(Popconfirm);
   });
 
   it("should enhance popconfirm component", () => {

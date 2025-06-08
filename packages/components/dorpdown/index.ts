@@ -1,9 +1,9 @@
 import Dropdown from './src/dropdown.vue'
 import DropdownItem from './src/dropdownItem.vue'
-import { withInstall } from '@learn-ui-to-me/utils'
+import { withInstall } from '@n-ui/utils'
 
-export const ErDropdown = withInstall(Dropdown)
-export const ErDropdownItem = withInstall(DropdownItem)
+export const NDropdown = withInstall(Dropdown)
+export const NDropdownItem = withInstall(DropdownItem)
 
 export * from './src/dropdown'
 

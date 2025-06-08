@@ -1,6 +1,6 @@
 import Notification from "./src/methods"
-import { withInstallFunction } from "@learn-ui-to-me/utils"
+import { withInstallFunction } from "@n-ui/utils"
 
-export const ErNotification = withInstallFunction(Notification, '$notify')
+export const NNotification = withInstallFunction(Notification, '$notify')
 
 export * from './src/notification'

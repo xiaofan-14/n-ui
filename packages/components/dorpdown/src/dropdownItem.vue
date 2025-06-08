@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { inject, computed } from 'vue';
 import { DROPDOWN_CTX_KEY } from './constants'
-import { useId } from '@learn-ui-to-me/hooks'
+import { useId } from '@n-ui/hooks'
 import type { dropdownItemProps } from './dropdown'
 
 defineOptions({
-  name: 'ErDropdownItem'
+  name: 'NDropdownItem'
 })
 
 const props = withDefaults(defineProps<dropdownItemProps>(), {
@@ -26,8 +26,8 @@ function handleClick() {
 <template>
   <li v-if="divided" role="separator" class="divided-placeholde"></li>
   <li :id="`dropdown-item-${command ?? useId().value}`" :class="{
-    'er-dropdown__item': true,
-    ['er-dropdown__item--' + size]: size,
+    'n-dropdown__item': true,
+    ['n-dropdown__item--' + size]: size,
     'is-disabled': disabled,
     'is-divided': divided
   }" @click="handleClick">

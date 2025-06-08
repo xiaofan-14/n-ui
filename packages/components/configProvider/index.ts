@@ -1,8 +1,8 @@
 import configProvider from "./configProvider.vue"
-import { withInstall } from '@learn-ui-to-me/utils'
+import { withInstall } from '@n-ui/utils'
 
 
-export const ErConfigProvider = withInstall(configProvider)
+export const NConfigProvider = withInstall(configProvider)
 
 export * from './types'
 export * from './hooks'

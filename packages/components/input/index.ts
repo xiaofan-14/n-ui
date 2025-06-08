@@ -1,6 +1,6 @@
 import Input from './src/input.vue'
-import { withInstall } from '@learn-ui-to-me/utils'
+import { withInstall } from '@n-ui/utils'
 
-export const ErInput = withInstall(Input)
+export const NInput = withInstall(Input)
 
 export * from './src/input'

@@ -1,6 +1,6 @@
 import Icon from './src/icon.vue'
-import { withInstall } from '@learn-ui-to-me/utils'
+import { withInstall } from '@n-ui/utils'
 
-export const ErIcon = withInstall(Icon)
+export const NIcon = withInstall(Icon)
 
 export * from './src/icon.ts'

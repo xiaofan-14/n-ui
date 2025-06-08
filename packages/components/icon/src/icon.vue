@@ -5,7 +5,7 @@ import {omit} from 'lodash-es'
 import {computed} from "vue";
 
 defineOptions({
-  name: 'ErIcon',
+  name: 'NIcon',
   inheritAttrs: false,
 })
 const props = defineProps<iconProps>()
@@ -20,8 +20,8 @@ const customStyle = computed(() => ({
 
 <template>
   <i
-      class="er-icon"
-      :class="[`er-icon-${props.type}`]"
+      class="n-icon"
+      :class="[`n-icon-${props.type}`]"
       :style="customStyle"
       v-bind="$attrs"
   >

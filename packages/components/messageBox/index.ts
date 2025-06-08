@@ -2,9 +2,9 @@ import MessageBox from './src/methods'
 import { set } from 'lodash-es'
 import type { App } from 'vue'
 
-export const ErMessageBox = MessageBox
+export const NMessageBox = MessageBox
 
-set(ErMessageBox, 'install', (app: App) => {
+set(NMessageBox, 'install', (app: App) => {
   app.config.globalProperties.$msgbox = MessageBox
   app.config.globalProperties.$messagebox = MessageBox
   app.config.globalProperties.$alert = MessageBox.alert
@@ -12,5 +12,6 @@ set(ErMessageBox, 'install', (app: App) => {
   app.config.globalProperties.$prompt = MessageBox.prompt
 })
 
-export default  ErMessageBox
+export default  NMessageBox
+
 export * from './src/messageBox'

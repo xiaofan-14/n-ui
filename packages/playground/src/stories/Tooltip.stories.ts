@@ -1,10 +1,10 @@
 import type {Meta, StoryObj} from "@storybook/vue3";
-import {ErTooltip, ErButton} from "learn-ui-to-me";
+import {ErTooltip, ErButton} from "n-ui";
 import {fn, userEvent, waitFor, within, expect} from '@storybook/test'
 
 type Story = StoryObj<typeof ErTooltip>
-import 'learn-ui-to-me/dist/esm/theme/button.css'
-import 'learn-ui-to-me/dist/esm/theme/tooltip.css'
+import 'n-ui/dist/esm/theme/button.css'
+import 'n-ui/dist/esm/theme/tooltip.css'
 
 const meta: Meta<typeof ErTooltip> = {
   title: "Example/Tooltip",

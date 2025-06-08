@@ -1,6 +1,6 @@
 import Switch from "./src/switch.vue"
-import { withInstall } from "@learn-ui-to-me/utils"
+import { withInstall } from "@n-ui/utils"
 
-export const ErSwitch = withInstall(Switch)
+export const NSwitch = withInstall(Switch)
 
 export * from './src/switch'

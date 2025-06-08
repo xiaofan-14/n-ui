@@ -12,7 +12,7 @@ import type {
 import { messageTypes } from './message'
 import { findIndex, isString, get, set, each } from 'lodash-es'
 import MessageConstructor from './message.vue'
-import { useId, useZIndex } from '@learn-ui-to-me/hooks'
+import { useId, useZIndex } from '@n-ui/hooks'
 
 const instances: MessageInstance[] = shallowReactive([])
 

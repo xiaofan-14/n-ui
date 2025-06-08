@@ -1,9 +1,9 @@
 import {createApp} from 'vue'
 import './style.css'
 import App from './App.vue'
-import LearnUI from 'learn-ui-to-me'
-import 'learn-ui-to-me/dist/index.css'
+import EUI from 'n-ui'
+import 'n-ui/dist/index.css'
 
 createApp(App)
-    .use(LearnUI)
+    .use(EUI)
     .mount('#app')

@@ -1,5 +1,5 @@
 {
-  "name": "@learn-ui-to-me/components",
+  "name": "@n-ui/components",
   "version": "1.0.0",
   "private": true,
   "description": "",
@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@learn-ui-to-me/utils": "workspace:*",
-    "@learn-ui-to-me/hooks": "workspace:*"
+    "@n-ui/utils": "workspace:*",
+    "@n-ui/hooks": "workspace:*"
   }
 }

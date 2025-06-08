@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type {alertProps, alertEmits, alertInstance} from './alert'
 import {ref, computed} from "vue"
-import {ErIcon} from '../../icon'
-import {typeIconMap} from "@learn-ui-to-me/utils"
+import {NIcon} from '../../icon'
+import {typeIconMap} from "@n-ui/utils"
 
 defineOptions({
-  name: 'ErAlert'
+  name: 'NAlert'
 })
 
 const props = withDefaults(defineProps<alertProps>(), {
@@ -42,35 +42,35 @@ defineExpose<alertInstance>({
 </script>
 
 <template>
-  <transition name="er-alert-fade">
+  <transition name="n-alert-fade">
     <div
       v-show="visible"
-      class="er-alert"
+      class="n-alert"
       role="alert"
       :class="{
-      [`er-alert__${type}`]: type,
-      [`er-alert__${effect}`]: effect,
+      [`n-alert__${type}`]: type,
+      [`n-alert__${effect}`]: effect,
       'text-center': center
     }">
-      <er-Icon
+      <n-icon
         v-if="showIcon"
-        class="er-alert__icon"
+        class="n-alert__icon"
         :class="{ 'big-icon': withDescription }"
         :icon="iconName"
       />
-      <div class="er-alert__content">
+      <div class="n-alert__content">
       <span
-        class="er-alert__title"
+        class="n-alert__title"
         :class="{ 'with-desc': withDescription}"
         :style="{ display: center && !showIcon ? 'flow' : 'inline'}"
       >
       <slot name="title">{{ title }}</slot>
       </span>
-        <p class="er-alert__description">
+        <p class="n-alert__description">
           <slot>{{ description }}</slot>
         </p>
-        <div class="er-alert__close" v-if="closable">
-          <er-icon @click.stop="close" icon="xmark"/>
+        <div class="n-alert__close" v-if="closable">
+          <n-icon @click.stop="close" icon="xmark"/>
         </div>
       </div>
     </div>

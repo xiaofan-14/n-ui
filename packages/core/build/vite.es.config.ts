@@ -7,7 +7,7 @@ import dts from "vite-plugin-dts";
 import vue from '@vitejs/plugin-vue'
 import terser from '@rollup/plugin-terser'
 import { visualizer } from "rollup-plugin-visualizer"
-import { hooksPlugin as hooks } from "@learn-ui-to-me/vite-plugins"
+import { hooksPlugin as hooks } from "@n-ui/vite-plugins"
 
 const TRY_MOVE_STYLE_DELAY = 800
 

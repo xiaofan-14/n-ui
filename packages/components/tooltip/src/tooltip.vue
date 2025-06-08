@@ -17,7 +17,7 @@ import {
 } from 'vue'
 import {bind, debounce} from 'lodash-es'
 import {createPopper} from '@popperjs/core'
-import {useClickOutSide} from '@learn-ui-to-me/hooks'
+import {useClickOutSide} from '@n-ui/hooks'
 import {useEventToTriggerNode} from "./useEventToTriggerNode"
 
 interface _tooltipProps extends tooltipProps {
@@ -26,7 +26,7 @@ interface _tooltipProps extends tooltipProps {
 }
 
 defineOptions({
-  name: 'ErTooltip'
+  name: 'NTooltip'
 })
 
 const props = withDefaults(defineProps<_tooltipProps>(), {
@@ -208,9 +208,9 @@ defineExpose<tooltipInstance>({
 </script>
 
 <template>
-  <div class="er-tooltip" ref="containerNode" v-on="outerEvents">
+  <div class="n-tooltip" ref="containerNode" v-on="outerEvents">
     <div
-      class="er-tooltip__trigger"
+      class="n-tooltip__trigger"
       ref="_triggerNode"
       v-on="events"
       v-if="!virtualTriggering">
@@ -219,7 +219,7 @@ defineExpose<tooltipInstance>({
     <slot name="default" v-else></slot>
 
     <transition :name="transition" @after-leave="destroyPopperInstance">
-      <div class="er-tooltip__popper" ref="popperNode" v-on="dropdownEvents" v-if="visible">
+      <div class="n-tooltip__popper" ref="popperNode" v-on="dropdownEvents" v-if="visible">
         <slot name="content">
           {{ content }}
         </slot>

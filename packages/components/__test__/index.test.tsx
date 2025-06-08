@@ -2,19 +2,19 @@ import type {Plugin} from 'vue'
 import {describe, expect, it} from 'vitest'
 import {get, map} from "lodash-es";
 import {
-  ErAlert,
-  ErButton,
-  ErCollapse,
-  ErIcon,
-  ErTooltip
+  NAlert,
+  NButton,
+  NCollapse,
+  NIcon,
+  NTooltip
 } from '../index'
 
 const comps: Plugin[] = [
-  ErAlert,
-  ErButton,
-  ErCollapse,
-  ErIcon,
-  ErTooltip
+  NAlert,
+  NButton,
+  NCollapse,
+  NIcon,
+  NTooltip
 ]
 
 describe('components/index', () => {

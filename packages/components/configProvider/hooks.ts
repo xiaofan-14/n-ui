@@ -1,13 +1,13 @@
-import English from '@learn-ui-to-me/locale/lang/en'
+import English from '@n-ui/locale/lang/en'
 import { merge } from 'lodash-es'
 import { computed, getCurrentInstance, inject, provide, ref, unref, watch } from 'vue'
 import { configProviderContextKey } from './constants'
-import { debugWarn } from '@learn-ui-to-me/utils'
+import { debugWarn } from '@n-ui/utils'
 import { createI18n, i18nSymbol } from 'vue3-i18n'
 import type { configProviderContext } from './constants'
 import type { MaybeRef, Ref, App } from 'vue'
 import type { configProviderProps } from './types'
-import type { TranslatePair } from '@learn-ui-to-me/locale'
+import type { TranslatePair } from '@n-ui/locale'
 
 const globalConfig = ref<configProviderProps>()
 

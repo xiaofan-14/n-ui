@@ -1,6 +1,6 @@
 import Overlay from './src/overlay.vue'
-import {withInstall } from "@learn-ui-to-me/utils"
+import {withInstall } from "@n-ui/utils"
 
-export const ErOverlay = withInstall(Overlay)
+export const NOverlay = withInstall(Overlay)
 
 export * from './src/overlay'

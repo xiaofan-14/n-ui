@@ -1,5 +1,5 @@
 {
-  "name": "learn-ui-to-me",
+  "name": "n-ui",
   "version": "1.0.0",
   "description": "components library by vue3 + Ts",
   "main": "./dist/umd/index.umd.cjs",

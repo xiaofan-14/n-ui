@@ -3,7 +3,7 @@ import {isString} from 'lodash-es'
 class ErUiError extends Error {
     constructor(msg: string) {
         super(msg);
-        this.name = 'ErUiError'
+        this.name = 'NUIError'
     }
 }
 

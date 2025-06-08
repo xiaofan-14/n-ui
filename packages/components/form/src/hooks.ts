@@ -7,7 +7,7 @@ import {
   watch
 } from 'vue'
 import { FORM_CTX_KEY, FORM_ITEM_CTX_KEY } from './constants'
-import { useProp, useId } from '@learn-ui-to-me/hooks'
+import { useProp, useId } from '@n-ui/hooks'
 import type {FormItemContext} from "./form"
 import type {
   MaybeRef,

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import type {buttonGroupProps} from "./button.ts"
+import type {ButtonGroupProps} from "./button"
 import {provide, reactive, toRef} from 'vue'
-import {BUTTON_GROUP_CTX} from "./contants.ts"
+import {BUTTON_GROUP_CTX} from "./contants"
 
 defineOptions({
   name: 'NButtonGroup'
 })
 
-const props = defineProps<buttonGroupProps>()
+const props = defineProps<ButtonGroupProps>()
 provide(
   BUTTON_GROUP_CTX,
   reactive({

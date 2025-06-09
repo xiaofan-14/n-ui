@@ -79,7 +79,7 @@ const {
 useClickOutSide(selectRef, (e) => handleClickOutSide(e))
 
 const isDisabled = computed(() => props.disabled)
-const children = computed(() => filter(slots?.default?.(), (child) => eq(child.type, ErOption)))
+const children = computed(() => filter(slots?.default?.(), (child) => eq(child.type, NOption)))
 
 const hasChildren = computed(() => size(children.value) > 0)
 

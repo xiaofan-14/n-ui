@@ -1,61 +1,41 @@
-<script lang="ts" setup>
-import {reactive, ref} from "vue";
-import {ErMessage, type FormInstance} from "n-ui";
-
-const formRef = ref<FormInstance>();
-const form = reactive({
-  name: "",
-  region: "",
-  delivery: false,
-  desc: "",
-});
-
-const options = ref([
-  {value: "beijing", label: "Zone One"},
-  {value: "shanghai", label: "Zone Two"},
-]);
-
-const rules = reactive({
-  name: [
-    {required: true, message: "请输入活动名称", trigger: "blur"},
-  ],
-});
-
-const onSubmit = () => {
-  formRef.value?.validate()
-    .then((valid) => {
-    if (valid) {
-      ErMessage.success("submit!");
-    }
-  }).catch(()=>{})
-};
-
-const onReset = () => {
-  formRef.value?.resetFields();
-};
+<script setup lang="ts">
+import {NButton } from 'n-ui'
 </script>
 
 <template>
-  <er-form ref="formRef" :model="form" :rules="rules">
-    <er-form-item label="Activity name" prop="name">
-      <er-input v-model="form.name"/>
-    </er-form-item>
-    <!--    <er-form-item label="Activity zone" prop="region">-->
-    <!--      <er-select-->
-    <!--        v-model="form.region"-->
-    <!--        placeholder="please select your zone"-->
-    <!--        :options="options"-->
-    <!--      />-->
-    <!--    </er-form-item>-->
-    <!--    <er-form-item label="Instant delivery" prop="delivery">-->
-    <!--      <er-switch v-model="form.delivery" />-->
-    <!--    </er-form-item>-->
-    <!--    <er-form-item label="Activity form" prop="desc">-->
-    <!--      <er-input v-model="form.desc" type="textarea" />-->
-    <!--    </er-form-item>-->
-    <er-form-item>
-      <er-button type="primary" @click="onSubmit">Create</er-button>
-      <er-button @click="onReset">Reset</er-button>
-    </er-form-item>
-  </er-form>
+  <p>
+    <n-button :disabled="true">Default</n-button>
+    <n-button type="primary">Primary</n-button>
+    <n-button type="success">Success</n-button>
+    <n-button type="info">Info</n-button>
+    <n-button type="warning">Warning</n-button>
+    <n-button type="danger">Danger</n-button>
+  </p>
+
+  <p>
+    <n-button plain>Plain</n-button>
+    <n-button type="primary" plain>Primary</n-button>
+    <n-button type="success" plain>Success</n-button>
+    <n-button type="info" plain>Info</n-button>
+    <n-button type="warning" plain>Warning</n-button>
+    <n-button type="danger" plain>Danger</n-button>
+  </p>
+
+  <p>
+    <n-button round>Round</n-button>
+    <n-button type="primary" round>Primary</n-button>
+    <n-button type="success" round>Success</n-button>
+    <n-button type="info" round>Info</n-button>
+    <n-button type="warning" round>Warning</n-button>
+    <n-button type="danger" round>Danger</n-button>
+  </p>
+
+  <p>
+    <n-button icon="search" circle />
+    <n-button type="primary" icon="edit" circle />
+    <n-button type="success" icon="check" circle />
+    <n-button type="info" icon="message" circle />
+    <n-button type="warning" icon="star" circle />
+    <n-button type="danger" icon="trash" circle />
+  </p>
 </template>

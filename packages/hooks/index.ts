@@ -7,6 +7,7 @@ import useOffset from "./useOffset"
 import useZIndex from './useZIndex'
 import useId from "./useId"
 import useProp from "./useProp"
+import useNamespace from "./useNamespace.ts"
 
 export {
   useFocusController,
@@ -17,5 +18,6 @@ export {
   useOffset,
   useZIndex,
   useId,
-  useProp
+  useProp,
+  useNamespace
 }

@@ -1,38 +1,45 @@
 <script setup lang="ts">
-import type {buttonProps, buttonInstance} from './button.ts'
-import {ref, computed, inject} from "vue"
+import type {ButtonProps, ButtonInstance, ButtonEmits} from './button.ts'
+import {computed} from "vue"
 import {throttle} from 'lodash-es'
 import {NIcon} from '../../icon'
-import {BUTTON_GROUP_CTX} from "./contants.ts"
+import {useButton} from "./useButton.ts"
+import {useButtonCustomStyle} from "./useButtonCustom"
+import loading from "../../loading";
 
-defineOptions({
-  name: 'NButton'
-})
+defineOptions({name: 'NButton'})
 
-const emits = defineEmits<{
-  (e: 'click', val: MouseEvent): void
-}>()
-
-const props = withDefaults(defineProps<buttonProps>(), {
+const props = withDefaults(defineProps<ButtonProps>(), {
   tag: 'button',
   nativeType: 'button',
   useThrottle: true,
   throttleDuration: 500,
 })
 
-const slots = defineSlots()
-const _ref = ref<HTMLButtonElement>()
-const ctx = inject(BUTTON_GROUP_CTX, void 0)
-const size = computed(() => ctx?.size ?? props?.size ?? '')
-const type = computed(() => ctx?.type ?? props?.type ?? '')
-const disabled = computed(() => ctx?.disabled || props?.disabled || false)
+const emits = defineEmits<ButtonEmits>()
 
-function handleBtnClick(e: MouseEvent) {
-  emits('click', e)
+const {
+  _size,
+  _type,
+  _disabled,
+  _ref,
+  slots,
+  handleClick
+} = useButton(props, emits as ButtonEmits)
+
+const { buttonKls } = useButtonCustomStyle(
+  _type,
+  _size,
+  _disabled,
+  props
+)
+
+function handleBtnClick(evt: MouseEvent) {
+  handleClick(evt)
 }
 
 const handleBtnClickThrottle = throttle(
-  handleBtnClick,
+  handleClick,
   props.throttleDuration,
   {trailing: false}
 )
@@ -45,11 +52,11 @@ const iconStyle = computed(() => {
   }
 })
 
-defineExpose<buttonInstance>({
+defineExpose<ButtonInstance>({
   ref: _ref,
-  disabled,
-  size,
-  type
+  disabled: _disabled,
+  size: _size,
+  type: _type
 })
 </script>
 
@@ -57,20 +64,11 @@ defineExpose<buttonInstance>({
   <component
     :id="props.id"
     ref="_ref"
-    class="n-button"
     :is="tag"
     :autofocus="autofocus"
     :type="tag === 'button' ? nativeType : void 0"
     :disabled="disabled || loading ? true : void 0"
-    :class="{
-      [`n-button--${type}`]: type,
-      [`n-button--${size}`]: size,
-      'is-loading': loading,
-      'is-disabled': disabled,
-      'is-plain': plain,
-      'is-circle': circle,
-      'is-round': round
-    }"
+    :class="buttonKls"
     @click="(e: MouseEvent) => useThrottle ? handleBtnClickThrottle(e) : handleBtnClick(e)"
   >
     <template v-if="loading">

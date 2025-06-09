@@ -4,7 +4,7 @@ export type buttonType = 'primary' | 'default' | 'success' | 'warning' | 'danger
 export type buttonSize = 'small' | 'default' | 'large'
 export type nativeType = 'button' | 'submit' | 'reset'
 
-export interface buttonProps {
+export interface ButtonProps {
   id?: string
   tag?: string | VNode
   type?: buttonType
@@ -23,17 +23,19 @@ export interface buttonProps {
   loadingIcon?: string,
   throttleDuration?: number
   nativeType?: nativeType
-  emits?: ['click', 'onClick']
 }
 
-export interface buttonGroupProps {
+export type ButtonEmits = {
+  (event: 'click', evt: MouseEvent): void
+}
+
+export interface ButtonGroupProps {
   size?: buttonSize,
   type?: buttonType,
   disabled?: boolean
 }
 
-
-export interface buttonGroupContext {
+export interface ButtonGroupContext {
   size?: buttonSize,
   type?: buttonType,
   disabled?: boolean
@@ -42,7 +44,7 @@ export interface buttonGroupContext {
 /**
  * 导出的 button 实例
  */
-export interface buttonInstance {
+export interface ButtonInstance {
   ref: Ref<HTMLButtonElement | void>
   disabled: ComputedRef<boolean>
   size: ComputedRef<buttonSize | ''>

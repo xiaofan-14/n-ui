@@ -14,7 +14,7 @@ const globalConfig = ref<configProviderProps>()
 export function useGlobalConfig<
   K extends keyof configProviderContext,
   D extends configProviderContext[K]
->(key: K, defaultVal?: D): Ref<Exclude<configProviderContext[K], void>>;
+>(key: K, defaultVal?: D): Ref<Exclude<configProviderContext[K], void> | D>;
 
 export function useGlobalConfig(): Ref<configProviderContext>;
 

@@ -14,7 +14,7 @@ import type {
   dropdownItemProps
 } from './dropdown'
 import type { tooltipInstance } from '../../tooltip'
-import type { buttonInstance } from '../../button'
+import type { ButtonInstance } from '../../button'
 
 
 defineOptions({
@@ -31,7 +31,7 @@ const emits = defineEmits<dropdownEmits>()
 const slots = defineSlots()
 
 const tooltipRef = ref<tooltipInstance>()
-const triggerRef = ref<buttonInstance | void>(void 0)
+const triggerRef = ref<ButtonInstance | void>(void 0)
 
 const virtualRef = computed(() => triggerRef.value?.ref ?? void 0)
 const tooltipProps = computed(() => {
@@ -71,7 +71,7 @@ defineExpose<dropdownInstance>({
       </n-button-group>
 
       <!-- <template v-else> -->
-        <slot e-else name="default"></slot>
+        <slot v-else name="default"></slot>
       <!-- </template> -->
 
       <template #content>

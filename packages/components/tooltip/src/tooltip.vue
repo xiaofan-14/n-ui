@@ -2,7 +2,7 @@
 import type {Ref} from 'vue'
 import type {DebouncedFunc} from 'lodash-es'
 import type {Instance} from '@popperjs/core'
-import type {buttonInstance} from "../../button"
+import type {ButtonInstance} from "../../button"
 import type {
   tooltipProps,
   tooltipEmits,
@@ -21,7 +21,7 @@ import {useClickOutSide} from '@n-ui/hooks'
 import {useEventToTriggerNode} from "./useEventToTriggerNode"
 
 interface _tooltipProps extends tooltipProps {
-  virtualRef?: HTMLElement | buttonInstance | void
+  virtualRef?: HTMLElement | ButtonInstance | void
   virtualTriggering?: boolean
 }
 
@@ -66,7 +66,7 @@ const closeDelay = computed(() => props.trigger === 'hover' ? props.hideTimeout 
 const triggerNode = computed(() => {
   if (props.virtualTriggering) {
     return (
-      ((props.virtualRef as buttonInstance)?.ref as any) ??
+      ((props.virtualRef as ButtonInstance)?.ref as any) ??
       (props.virtualRef as HTMLElement) ?? _triggerNode.value
     )
   }

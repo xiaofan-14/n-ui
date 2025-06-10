@@ -49,13 +49,13 @@ export default defineConfig({
       compress: {
         sequences: isProd,
         arguments: isProd,
-        // drop_console: isProd && ["log"],
+        drop_console: isProd && ["log"],
         drop_debugger: isProd,
         passes: isProd ? 4 : 1,
         global_defs: {
-          "DEV": JSON.stringify(isDev),
-          "PROD": JSON.stringify(isProd),
-          "TEST": JSON.stringify(isTest),
+          "@DEV": JSON.stringify(isDev),
+          "@PROD": JSON.stringify(isProd),
+          "@TEST": JSON.stringify(isTest),
         },
       },
       format: {
@@ -79,7 +79,7 @@ export default defineConfig({
     cssCodeSplit: true,
     lib: {
       entry: resolve(__dirname, '../index.ts'),
-      name: 'LearnUI',
+      name: 'N-UI',
       fileName: 'index',
       formats: ['es']
     },

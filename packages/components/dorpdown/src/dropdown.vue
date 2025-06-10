@@ -43,9 +43,8 @@ function handleItemClick(e: dropdownItemProps) {
   !isNil(e.command) && emits('command', e.command)
 }
 
-if (!TEST) {
-  useDisabledStyle()
-}
+// @ts-ignore
+!TEST && useDisabledStyle()
 
 provide<dropdownContext>(DROPDOWN_CTX_KEY, {
   handleItemClick,
@@ -62,6 +61,7 @@ defineExpose<dropdownInstance>({
   <div class="n-dropdown" :class="{
     'is-disabled': props.disabled
   }">
+
     <n-tooltip ref="tooltipRef" v-bind="tooltipProps" :virtual-triggering="splitButton" :virtual-ref="virtualRef"
       @:visible-change="$emit('visible-change', $event)">
 

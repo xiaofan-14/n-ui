@@ -34,7 +34,6 @@ describe("Popconfirm.vue", () => {
     const wrapper = mount(NPopconfirm, {
       props,
     });
-
     each(props, (value, key) => {
       expect(get(wrapper.props(), key)).toEqual(value);
     });

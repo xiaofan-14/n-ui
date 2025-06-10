@@ -1,6 +1,6 @@
 import { type Ref, type VNode } from "vue";
 import { type messageType } from "../../message";
-import { type buttonType } from "../../button"
+import { type ButtonType } from "../../button"
 
 export type MessageBoxAction = "confirm" | "cancel" | "close";
 export type MessageBoxType = "" | "prompt" | "alert" | "confirm";
@@ -32,8 +32,8 @@ export interface MessageBoxOptions {
   cancelButtonDisabled?: boolean;
   confirmButtonDisabled?: boolean;
 
-  cancelButtonType?: buttonType;
-  confirmButtonType?: buttonType;
+  cancelButtonType?: ButtonType;
+  confirmButtonType?: ButtonType;
   roundButton?: boolean;
 
   center?: boolean;

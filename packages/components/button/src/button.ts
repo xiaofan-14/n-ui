@@ -1,14 +1,14 @@
 import type {ComputedRef, Ref, VNode} from "vue";
 
-export type buttonType = 'primary' | 'default' | 'success' | 'warning' | 'danger'
-export type buttonSize = 'small' | 'default' | 'large'
-export type nativeType = 'button' | 'submit' | 'reset'
+export type ButtonType = 'primary' | 'default' | 'success' | 'warning' | 'danger'
+export type ButtonSize = 'small' | 'default' | 'large'
+export type NativeType = 'button' | 'submit' | 'reset'
 
 export interface ButtonProps {
   id?: string
   tag?: string | VNode
-  type?: buttonType
-  size?: buttonSize
+  type?: ButtonType
+  size?: ButtonSize
   icon?: string | VNode
   suffixIcon?: string | VNode
   loading?: boolean
@@ -22,7 +22,7 @@ export interface ButtonProps {
   href?: string
   loadingIcon?: string,
   throttleDuration?: number
-  nativeType?: nativeType
+  nativeType?: NativeType
 }
 
 export type ButtonEmits = {
@@ -30,14 +30,14 @@ export type ButtonEmits = {
 }
 
 export interface ButtonGroupProps {
-  size?: buttonSize,
-  type?: buttonType,
+  size?: ButtonSize,
+  type?: ButtonType,
   disabled?: boolean
 }
 
 export interface ButtonGroupContext {
-  size?: buttonSize,
-  type?: buttonType,
+  size?: ButtonSize,
+  type?: ButtonType,
   disabled?: boolean
 }
 
@@ -47,6 +47,6 @@ export interface ButtonGroupContext {
 export interface ButtonInstance {
   ref: Ref<HTMLButtonElement | void>
   disabled: ComputedRef<boolean>
-  size: ComputedRef<buttonSize | ''>
-  type: ComputedRef<buttonType | ''>
+  size: ComputedRef<ButtonSize | ''>
+  type: ComputedRef<ButtonType | ''>
 }

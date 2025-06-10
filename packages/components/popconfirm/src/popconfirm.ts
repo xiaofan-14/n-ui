@@ -1,11 +1,11 @@
-import type { buttonType } from '../../button'
+import type { ButtonType } from '../../button'
 
 export interface popconfirmProps {
   title?: string
   confirmButtonText?: string
   cancelButtonText?: string
-  confirmButtonType?: buttonType
-  cancelButtonType?: buttonType
+  confirmButtonType?: ButtonType
+  cancelButtonType?: ButtonType
   icon?: string
   iconColor?: string
   hideIcon?: boolean

@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import type {ButtonProps, ButtonInstance, ButtonEmits} from './button.ts'
-import {computed} from "vue"
-import {throttle} from 'lodash-es'
+import type {ButtonProps, ButtonInstance, ButtonEmits} from './button'
+import {computed, type ComputedRef} from "vue"
 import {NIcon} from '../../icon'
-import {useButton} from "./useButton.ts"
+import {useButton} from "./useButton"
 import {useButtonCustomStyle} from "./useButtonCustom"
-import loading from "../../loading";
+import {throttle} from "lodash-es"
 
 defineOptions({name: 'NButton'})
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   tag: 'button',
+  type: 'primary',
   nativeType: 'button',
   useThrottle: true,
   throttleDuration: 500,
@@ -23,26 +23,14 @@ const {
   _type,
   _disabled,
   _ref,
+  _props,
   slots,
   handleClick
 } = useButton(props, emits as ButtonEmits)
 
-const { buttonKls } = useButtonCustomStyle(
-  _type,
-  _size,
-  _disabled,
-  props
-)
-
-function handleBtnClick(evt: MouseEvent) {
-  handleClick(evt)
-}
-
-const handleBtnClickThrottle = throttle(
-  handleClick,
-  props.throttleDuration,
-  {trailing: false}
-)
+const {
+  buttonKls
+} = useButtonCustomStyle(_type, _size, _disabled as ComputedRef<boolean>, props)
 
 const iconStyle = computed(() => {
   const marginValue = slots.default ? '6px' : '0px'
@@ -52,9 +40,19 @@ const iconStyle = computed(() => {
   }
 })
 
+function handleBtnClick(evt: MouseEvent) {
+  handleClick(evt)
+}
+
+const handleBtnClickThrottle = throttle(
+  handleBtnClick,
+  props.throttleDuration,
+  {trailing: false}
+)
+
 defineExpose<ButtonInstance>({
   ref: _ref,
-  disabled: _disabled,
+  disabled: _disabled as ComputedRef<boolean>,
   size: _size,
   type: _type
 })
@@ -62,18 +60,23 @@ defineExpose<ButtonInstance>({
 
 <template>
   <component
-    :id="props.id"
-    ref="_ref"
     :is="tag"
-    :autofocus="autofocus"
-    :type="tag === 'button' ? nativeType : void 0"
-    :disabled="disabled || loading ? true : void 0"
+    ref="_ref"
+    v-bind="_props"
     :class="buttonKls"
     @click="(e: MouseEvent) => useThrottle ? handleBtnClickThrottle(e) : handleBtnClick(e)"
   >
+
+    <!--  only loading -->
     <template v-if="loading">
       <slot name="loading">
-        <n-icon class="loading-icon" :icon="loadingIcon ?? 'spinner'" spin :style="iconStyle" size="1x"/>
+        <n-icon
+          class="loading-icon"
+          :icon="loadingIcon ?? 'spinner'"
+          spin
+          :style="iconStyle"
+          size="1x"
+        />
       </slot>
     </template>
 

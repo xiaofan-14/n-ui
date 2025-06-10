@@ -22,6 +22,6 @@ export function useButtonCustomStyle(
   ])
 
   return {
-    buttonKls
+    buttonKls,
   }
 }

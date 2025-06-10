@@ -43,7 +43,9 @@ function handleItemClick(e: dropdownItemProps) {
   !isNil(e.command) && emits('command', e.command)
 }
 
-!TEST && useDisabledStyle()
+if (!TEST) {
+  useDisabledStyle()
+}
 
 provide<dropdownContext>(DROPDOWN_CTX_KEY, {
   handleItemClick,

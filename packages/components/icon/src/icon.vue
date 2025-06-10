@@ -2,13 +2,17 @@
 import type {iconProps} from './icon.ts'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {omit} from 'lodash-es'
-import {computed} from "vue";
+import {computed} from "vue"
 
 defineOptions({
   name: 'NIcon',
   inheritAttrs: false,
 })
-const props = defineProps<iconProps>()
+
+const props = withDefaults(defineProps<iconProps>(),{
+  type: 'primary',
+  color: 'white'
+})
 
 const filterProps = computed(() => {
   return omit(props, ['type', 'color'])

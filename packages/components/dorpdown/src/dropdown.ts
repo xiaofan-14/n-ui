@@ -1,6 +1,6 @@
 import type { VNode, ComputedRef } from 'vue'
 import type { tooltipProps } from '../../tooltip'
-import type { buttonType, buttonSize } from '../../button'
+import type { ButtonType, ButtonSize } from '../../button'
 
 export type dropdownCommand = string | number
 
@@ -12,8 +12,8 @@ export interface dropdownItemProps {
 }
 
 export interface dropdownProps extends tooltipProps {
-  type?: buttonType
-  size?: buttonSize
+  type?: ButtonType
+  size?: ButtonSize
   items?: dropdownItemProps[]
   hideOnClick?: boolean
   splitButton?: boolean
@@ -32,5 +32,5 @@ export interface dropdownInstance {
 
 export interface dropdownContext {
   handleItemClick(item: dropdownProps): void
-  size: ComputedRef<buttonSize | void>
+  size: ComputedRef<ButtonSize | void>
 }

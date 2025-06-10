@@ -53,9 +53,9 @@ export default defineConfig({
         drop_debugger: isProd,
         passes: isProd ? 4 : 1,
         global_defs: {
-          "@DEV": JSON.stringify(isDev),
-          "@PROD": JSON.stringify(isProd),
-          "@TEST": JSON.stringify(isTest),
+          "DEV": JSON.stringify(isDev),
+          "PROD": JSON.stringify(isProd),
+          "TEST": JSON.stringify(isTest),
         },
       },
       format: {

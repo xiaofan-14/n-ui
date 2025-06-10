@@ -2,12 +2,16 @@
 import type {ButtonGroupProps} from "./button"
 import {provide, reactive, toRef} from 'vue'
 import {BUTTON_GROUP_CTX} from "./contants"
+import {useNamespace} from "@n-ui/hooks"
 
 defineOptions({
   name: 'NButtonGroup'
 })
 
 const props = defineProps<ButtonGroupProps>()
+
+const ns = useNamespace('button')
+
 provide(
   BUTTON_GROUP_CTX,
   reactive({
@@ -19,7 +23,7 @@ provide(
 </script>
 
 <template>
-  <div class="n-button-group">
+  <div :class="ns.b('group')">
     <slot></slot>
   </div>
 </template>

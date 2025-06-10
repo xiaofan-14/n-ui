@@ -3,6 +3,7 @@ import type {alertProps, alertEmits, alertInstance} from './alert'
 import {ref, computed} from "vue"
 import {NIcon} from '../../icon'
 import {typeIconMap} from "@n-ui/utils"
+import {useNamespace} from "@n-ui/hooks"
 
 defineOptions({
   name: 'NAlert'
@@ -16,6 +17,9 @@ const props = withDefaults(defineProps<alertProps>(), {
 
 const emits = defineEmits<alertEmits>()
 const slots = defineSlots()
+
+const ns = useNamespace('alert')
+
 const visible = ref(true)
 
 const iconName = computed(() => {
@@ -42,7 +46,7 @@ defineExpose<alertInstance>({
 </script>
 
 <template>
-  <transition name="n-alert-fade">
+  <transition :name="ns.b('fade')">
     <div
       v-show="visible"
       class="n-alert"

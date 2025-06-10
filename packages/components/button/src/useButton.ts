@@ -15,7 +15,7 @@ export function useButton(
   const _size = computed(() => ctx?.size ?? props?.size ?? '')
   const _type = computed(() => ctx?.type ?? props?.type ?? '')
   const _disabled = computed(()=>
-    useFormDisabled().value || props.disabled
+    useFormDisabled().value || props.disabled || ctx?.disabled
   )
   const _ref = ref<HTMLButtonElement>()
   const slots = useSlots()

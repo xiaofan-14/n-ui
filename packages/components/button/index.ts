@@ -1,5 +1,5 @@
 import Button from './src/button.vue'
-import ButtonGroup from "./src/button-group.vue"
+import ButtonGroup from "./src/buttonGroup.vue"
 import { withInstall } from "@n-ui/utils"
 
 export const NButton = withInstall(Button)

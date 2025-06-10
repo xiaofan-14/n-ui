@@ -4,7 +4,7 @@ import type { ButtonType, ButtonSize } from "../src/button";
 
 import {NIcon as Icon} from "../../icon";
 import Button from "../src/button.vue";
-import ButtonGroup from "../src/button-group.vue";
+import ButtonGroup from "../src/buttonGroup.vue";
 
 describe("Button.vue", () => {
   const onClick = vi.fn();
@@ -248,6 +248,7 @@ describe("ButtonGroup.vue", () => {
     ));
 
     const buttonWrapper = wrapper.findComponent(Button);
+    console.log(wrapper.html())
     expect(buttonWrapper.classes()).toContain(`is-disabled`);
   });
 });

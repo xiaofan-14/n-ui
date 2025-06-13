@@ -24,7 +24,10 @@ import {
   keys,
   map,
   isArray,
-  cloneDeep, some, isNumber, endsWith
+  cloneDeep,
+  some,
+  isNumber,
+  endsWith
 } from "lodash-es"
 import { useId } from '@n-ui/hooks'
 import Schema, { type RuleItem } from 'async-validator'
@@ -66,6 +69,7 @@ const propString = computed(() => {
   if (!props.prop) return ''
   return isString(props.prop) ? props.prop : props.prop.join('.')
 })
+
 const itemRules = computed(() => {
   const { required } = props
   const rules: FormItemRule[] = []
@@ -100,9 +104,13 @@ const itemRules = computed(() => {
 
   return rules
 })
+
 const hasLabel = computed(()=> !!(props.label || slots.lable))
+
 const labelFor = computed(()=>props.for || (inputIds.value.length ? inputIds.value[0] : ''))
+
 const currentLabel = computed(() => `${props.label ?? ''}${ctx?.labelSuffix ?? ''}` )
+
 const normalizeLabelWidth = computed(()=>{
   const _normalizeStyle = (val: number|string) => {
     if(isNumber(val)) return `${val}px`

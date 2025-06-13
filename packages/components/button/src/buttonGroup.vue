@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import type {ButtonGroupProps} from "./button"
 import {provide, reactive, toRef} from 'vue'
 import {BUTTON_GROUP_CTX} from "./contants"
 import {useNamespace} from "@n-ui/hooks"
+import type {ButtonGroupProps} from "./button"
 
-defineOptions({
-  name: 'NButtonGroup'
-})
+defineOptions({name: 'NButtonGroup'})
 
 const props = defineProps<ButtonGroupProps>()
 

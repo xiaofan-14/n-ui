@@ -3,11 +3,15 @@ import type {iconProps} from './icon.ts'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {omit} from 'lodash-es'
 import {computed} from "vue"
+import {useNamespace} from "@n-ui/hooks"
+import { addUnit } from "@n-ui/utils"
 
 defineOptions({
   name: 'NIcon',
   inheritAttrs: false,
 })
+
+const ns = useNamespace('icon')
 
 const props = withDefaults(defineProps<iconProps>(),{
   type: 'primary',
@@ -17,15 +21,15 @@ const props = withDefaults(defineProps<iconProps>(),{
 const filterProps = computed(() => {
   return omit(props, ['type', 'color'])
 })
+
 const customStyle = computed(() => ({
-  color: props.color ?? void 0
+  color: props.color ?? void 0,
 }))
 </script>
 
 <template>
   <i
-      class="n-icon"
-      :class="[`n-icon-${props.type}`]"
+      :class="[ns.b(), `n-icon-${props.type}`]"
       :style="customStyle"
       v-bind="$attrs"
   >

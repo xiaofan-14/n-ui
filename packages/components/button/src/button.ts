@@ -5,13 +5,21 @@ export type ButtonSize = 'small' | 'default' | 'large'
 export type NativeType = 'button' | 'submit' | 'reset'
 
 export interface ButtonProps {
+  // id
   id?: string
+  // 标签类型
   tag?: string | VNode
+  // 类型 区别样式
   type?: ButtonType
+  // 按钮大小
   size?: ButtonSize
+  // 按钮图标
   icon?: string | VNode
+  // 后缀图标
   suffixIcon?: string | VNode
+  // 加载状态
   loading?: boolean
+  // 是否禁用
   disabled?: boolean
   plain?: boolean
   debounce?: boolean

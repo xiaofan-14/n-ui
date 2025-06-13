@@ -248,7 +248,6 @@ describe("ButtonGroup.vue", () => {
     ));
 
     const buttonWrapper = wrapper.findComponent(Button);
-    console.log(wrapper.html())
     expect(buttonWrapper.classes()).toContain(`is-disabled`);
   });
 });

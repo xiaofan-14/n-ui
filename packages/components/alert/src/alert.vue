@@ -5,9 +5,7 @@ import {NIcon} from '../../icon'
 import {typeIconMap} from "@n-ui/utils"
 import {useNamespace} from "@n-ui/hooks"
 
-defineOptions({
-  name: 'NAlert'
-})
+defineOptions({ name: 'NAlert' })
 
 const props = withDefaults(defineProps<alertProps>(), {
   effect: 'light',

@@ -3,7 +3,7 @@ import type {
   ValidateError,
   ValidateFieldsError,
 } from "async-validator";
-import type { Ref } from "vue";
+import type { Ref } from "vue"
 
 export interface FormItemRule extends RuleItem {
   trigger?: string | string[];

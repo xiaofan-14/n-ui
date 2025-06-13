@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type {ButtonProps, ButtonInstance, ButtonEmits} from './button'
-import {computed, type ComputedRef} from "vue"
 import {NIcon} from '../../icon'
 import {useButton} from "./useButton"
 import {useButtonCustomStyle} from "./useButtonCustom"
 import {throttle} from "lodash-es"
+import type {ButtonProps, ButtonInstance, ButtonEmits} from './button'
 
 defineOptions({name: 'NButton'})
 
@@ -13,7 +12,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   type: 'primary',
   nativeType: 'button',
   useThrottle: true,
-  throttleDuration: 500,
+  throttleDuration: 300,
 })
 
 const emits = defineEmits<ButtonEmits>()
@@ -26,33 +25,19 @@ const {
   _props,
   slots,
   handleClick
-} = useButton(props, emits as ButtonEmits)
+} = useButton(props, emits)
 
-const {
-  buttonKls
-} = useButtonCustomStyle(_type, _size, _disabled as ComputedRef<boolean>, props)
-
-const iconStyle = computed(() => {
-  const marginValue = slots.default ? '6px' : '0px'
-  return {
-    ...(props.icon && {marginRight: marginValue}),
-    ...(props.suffixIcon && {marginLeft: marginValue})
-  }
-})
+const {buttonKls, iconStyle} = useButtonCustomStyle(_type, _size, _disabled, props, slots)
 
 function handleBtnClick(evt: MouseEvent) {
   handleClick(evt)
 }
 
-const handleBtnClickThrottle = throttle(
-  handleBtnClick,
-  props.throttleDuration,
-  {trailing: false}
-)
+const handleBtnClickThrottle = throttle(handleBtnClick, props.throttleDuration, {trailing: false})
 
 defineExpose<ButtonInstance>({
   ref: _ref,
-  disabled: _disabled as ComputedRef<boolean>,
+  disabled: _disabled,
   size: _size,
   type: _type
 })

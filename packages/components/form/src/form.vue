@@ -9,19 +9,23 @@ import type {
   FormItemContext,
   FormProps
 } from './form'
-import type { ValidateFieldsError } from "async-validator";
+import { useNamespace } from '@n-ui/hooks'
+import type { ValidateFieldsError } from "async-validator"
 
-defineOptions({ name: 'NForm' })
+const COMPONENT_NAME = 'NForm'
 
+defineOptions({ name: COMPONENT_NAME })
+
+const ns = useNamespace('form')
 const props = withDefaults(defineProps<FormProps>(), {
   showMessage: true,
   hideRequiredAsterisk: false,
   labelPosition: 'right'
 })
+
 const emits = defineEmits<FormEmits>()
 
 const fields: FormItemContext[] = []
-
 
 const addField: FormContext['addField'] = function (field) {
   if (!field.prop) return
@@ -63,7 +67,6 @@ const validateField: FormInstance['validateField'] = async function (keys, callb
     callback?.(false, invalidFields)
     return Promise.reject(invalidFields)
   }
-
 }
 
 const validate: FormInstance['validate'] = async function (callback) {
@@ -93,7 +96,6 @@ const formCtx: FormContext = reactive({
 
 provide(FORM_CTX_KEY, formCtx)
 
-
 defineExpose<FormInstance>({
   validate,
   validateField,
@@ -103,7 +105,7 @@ defineExpose<FormInstance>({
 </script>
 
 <template>
-  <form class="n-form">
+  <form :class="ns.b()">
     <slot></slot>
   </form>
 </template>

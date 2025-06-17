@@ -10,8 +10,8 @@ import {
   NInput,
   NSwitch,
   NSelect,
-} from 'n-ui'
-import type {FormInstance} from "n-ui"
+} from 'n-ui-mini'
+import type {FormInstance} from "n-ui-mini"
 
 function handleBtnClick() {
   NMessage.info("btn click");

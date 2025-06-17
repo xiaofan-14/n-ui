@@ -24,7 +24,7 @@
 - 使用 npm，你将需要使用`TypeScript`，并在ts文件里编写和使用代码。 请确保你了解过它，并能够大致使用
 
 ```bash
-npm install n-ui --save
+pnpm install n-ui-mini
 ```
 
 ## 示例
@@ -42,7 +42,7 @@ import Collapse from '';
 引入样式：
 
 ```ts
-import 'nui/dist/esm/index.css';
+import 'n-ui-mini/dist/index.css'
 ```
 
 ## 按需引用
@@ -67,7 +67,5 @@ npm install xxx
 - [Ant Design of Vue](https://2x.antdv.com/docs/vue/introduce-cn/)
 - [Element](https://element.eleme.cn/)
 - [Element-angular](https://element-angular.faas.ele.me/guide/install)
-
-## 如何贡献
 
 ## LICENSE

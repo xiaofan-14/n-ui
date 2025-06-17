@@ -24,12 +24,22 @@ function getDirectoriesSync(basePath: string) {
   );
 }
 
-function moveStyles() {
-  readdir('./dist/esm/them', (err) => {
-    if (err) return delay(moveStyles, TRY_MOVE_STYLE_DELAY)
-    defer(() => shell.mv('./dist/esm/theme', './dist'))
+function moveStyles(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const tryMove = () => {
+      readdir('./dist/esm/theme', (err) => {
+        if (err) {
+          delay(tryMove, TRY_MOVE_STYLE_DELAY)
+        } else {
+          shell.mv('./dist/esm/theme', './dist')
+          resolve()
+        }
+      })
+    }
+    tryMove()
   })
 }
+
 
 export default defineConfig({
   plugins: [

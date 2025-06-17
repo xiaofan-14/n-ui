@@ -14,7 +14,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<MessageProps>(), {
   type: 'success',
-  druation: 3000,
+  duration: 3000,
   offset: 10,
   transitionName: 'fade-up'
 })

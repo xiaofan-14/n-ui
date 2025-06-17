@@ -14,6 +14,7 @@ import { findIndex, isString, get, set, each } from 'lodash-es'
 import MessageConstructor from './message.vue'
 import { useId, useZIndex } from '@n-ui/hooks'
 
+// 消息数组队列
 const instances: MessageInstance[] = shallowReactive([])
 
 const { nextZIndex } = useZIndex()
@@ -36,7 +37,7 @@ function createMessage(props: CreateMessageProps): MessageInstance {
   const id = useId().value
   const container = document.createElement('div')
 
-  function destory() {
+  function destroy() {
     const idx = findIndex(instances, { id })
     if (idx === -1) return
     instances.splice(idx, 1)
@@ -47,16 +48,16 @@ function createMessage(props: CreateMessageProps): MessageInstance {
     ...props,
     id,
     zIndex: nextZIndex(),
-    onDestroy: destory,
+    onDestroy: destroy,
   }
 
-  const vnode = h(MessageConstructor, _props )
+  const vNode = h(MessageConstructor, _props )
 
-  render(vnode, container)
+  render(vNode, container)
 
   document.body.appendChild(container.firstElementChild!)
 
-  const vm = vnode.component!
+  const vm = vNode.component!
   const handler: MessageHandler = {
     close: () => vm.exposed?.close()
   }
@@ -64,7 +65,7 @@ function createMessage(props: CreateMessageProps): MessageInstance {
     props: _props,
     id,
     vm,
-    vnode,
+    vnode: vNode,
     handler
   }
   instances.push(instance)

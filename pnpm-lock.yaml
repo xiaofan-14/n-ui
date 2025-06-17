@@ -41,12 +41,12 @@ importers:
       '@vitepress-preview/component':
         specifier: workspace:*
         version: link:libs/vitepress-preview-component
-      n-ui:
-        specifier: workspace:*
-        version: link:packages/core
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
+      n-ui-mini:
+        specifier: workspace:*
+        version: link:packages/core
       postcss-color-mix:
         specifier: ^1.1.0
         version: 1.1.0

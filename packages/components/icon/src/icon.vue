@@ -4,7 +4,6 @@ import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {omit} from 'lodash-es'
 import {computed} from "vue"
 import {useNamespace} from "@n-ui/hooks"
-import { addUnit } from "@n-ui/utils"
 
 defineOptions({
   name: 'NIcon',

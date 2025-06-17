@@ -48,7 +48,7 @@ export default defineConfig({
         outDir: 'dist/umd',
         lib: {
             entry: resolve(__dirname, '../index.ts'),
-            name: 'LearnUI',
+            name: 'NUI',
             fileName: 'index',
             formats: ['umd']
         },

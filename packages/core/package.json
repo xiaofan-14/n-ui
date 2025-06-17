@@ -1,5 +1,5 @@
 {
-  "name": "n-ui",
+  "name": "n-ui-mini",
   "version": "1.0.0",
   "description": "components library by vue3 + Ts",
   "main": "./dist/umd/index.umd.cjs",

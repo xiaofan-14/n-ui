@@ -1,6 +1,5 @@
-import {useSlots} from "vue"
+import {inject, computed, ref, useSlots} from 'vue'
 import {BUTTON_GROUP_CTX} from "./contants"
-import {inject, computed, ref} from 'vue'
 import {useFormDisabled, useFormItem} from "../../form"
 import type {ButtonEmits, ButtonProps} from "./button"
 

@@ -6,7 +6,7 @@ import {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "learn-ui",
+  title: "n-ui",
   description: "学习ui组件库",
   appearance: false,
   themeConfig: {

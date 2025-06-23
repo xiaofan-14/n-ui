@@ -13,7 +13,7 @@ export default defineConfig({
     minify: false,
     outDir: './dist',
     lib: {
-      entry: resolve(__dirname, './index.js'),
+      entry: resolve(__dirname, './index.ts'),
       name: 'vitePlugins',
       fileName: 'index',
       formats: ['es']

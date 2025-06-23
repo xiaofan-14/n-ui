@@ -14,7 +14,7 @@ import type {
   WatchStopHandle
 } from 'vue'
 
-interface UseFormItemInputCommenProps extends Record<string, any> {
+interface UseFormItemInputCommentProps extends Record<string, any> {
   id?: string
 }
 
@@ -42,7 +42,7 @@ export function useFormDisabled(fallback?: MaybeRef<boolean | void>) {
 }
 
 export function useFormItemInputId(
-  props: UseFormItemInputCommenProps,
+  props: UseFormItemInputCommentProps,
   formItemContext?: FormItemContext
 ) {
   const inputId = ref<string>('')
